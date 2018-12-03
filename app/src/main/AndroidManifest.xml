@@ -36,7 +36,8 @@
         <activity
             android:name=".Activity.ViewFinanciamento"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".Activity.ViewCreditoComGarantia"></activity>
+        <activity android:name=".Activity.ViewCreditoComGarantia" />
+        <activity android:name=".Activity.ViewInvestimentos"></activity>
     </application>
 
 </manifest>
