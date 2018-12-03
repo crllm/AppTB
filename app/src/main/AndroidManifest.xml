@@ -20,28 +20,29 @@
         </activity>
         <activity
             android:name=".Activity.ViewSplash"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Activity.ViewLogin"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Activity.ViewAlterarCadastro"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Activity.ViewPagamento"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Activity.ViewEmprestimo"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Activity.ViewFinanciamento"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".ViewAplicacoesActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".Activity.ViewCreditoComGarantia" />
-        <activity android:name=".Activity.ViewInvestimentos"></activity>
+        <activity android:name=".Activity.ViewInvestimentos" />
+        <activity android:name=".ViewExtratoActivity"></activity>
     </application>
 
 </manifest>
