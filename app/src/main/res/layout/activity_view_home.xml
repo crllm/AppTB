@@ -35,7 +35,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
                 android:text="Olá Guilherme,"
-                android:textSize="30dp"
+                android:textSize="35sp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 />
@@ -55,13 +55,13 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/icone_alterarDados"
+                        android:src="@drawable/icone_alterardados"
                         />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Alterar Dados"
-                        android:textSize="16dp"
+                        android:textSize="18sp"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -80,7 +80,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Pagamentos"
-                        android:textSize="16dp"
+                        android:textSize="18sp"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -99,7 +99,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Empréstimos"
-                        android:textSize="15dp"
+                        android:textSize="18sp"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -127,7 +127,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Investimentos"
-                        android:textSize="16dp"
+                        android:textSize="18sp"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -146,7 +146,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Extrato"
-                        android:textSize="16dp"
+                        android:textSize="18sp"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -165,7 +165,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Saldo"
-                        android:textSize="15dp"
+                        android:textSize="18sp"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -179,7 +179,7 @@
             android:gravity="center_horizontal"
             android:text="R$ + DE 8000"
             android:textColor="@color/black"
-            android:textSize="25dp"
+            android:textSize="28sp"
             android:textStyle="bold" />
         <LinearLayout
             android:layout_width="match_parent"
@@ -194,7 +194,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rua Quintino Bcaiuva, 52"
-                android:textSize="15dp"
+                android:textSize="16sp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="10dp"/>
@@ -202,7 +202,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Londrina, PR"
-                android:textSize="15dp"
+                android:textSize="16sp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="30dp"/>
