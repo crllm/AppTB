@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">TraineeBanking</string>
+    <string name="poupanca">Poupança -> O investimento na poupança possui
+        rendimento anual de 5% ao ano e não e cobrado
+        multa para retirada antes do prazo.</string>
+
+    <string name="pre_fixado">Pré-Fixado -> O investimento pré-fixado possui
+        rendimento anual de 7% ao ano e caso seja
+        retirado antes da hora é cobrado multa no valor
+        de R$300,00.</string>
 </resources>
