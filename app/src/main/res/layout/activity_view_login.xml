@@ -1,9 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.ViewLogin">
+    tools:context=".Activity.ViewLogin"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="25dp"
+    android:background="@drawable/background_login">
 
-</android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/tb_logo"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="100"
+        android:layout_marginTop="30dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="40"
+            android:gravity="left"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Agência"
+                android:textColor="@color/white"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/textbox_border"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="60"
+            android:layout_marginLeft="20dp"
+            android:gravity="left"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Conta"
+                android:textColor="@color/white"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_gravity="right"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/textbox_border"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="left"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Senha"
+                android:textColor="@color/white"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_gravity="right"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/textbox_border"
+                android:textSize="16sp"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="15dp"
+                android:textSize="20sp"
+                android:background="@drawable/buttonazul_border"
+                android:textColor="@color/white"
+                android:text="ACESSAR"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

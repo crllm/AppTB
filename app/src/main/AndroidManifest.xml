@@ -9,19 +9,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.ViewHome">
+        <activity
+            android:name=".Activity.ViewHome"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.ViewSplash" />
-        <activity android:name=".Activity.ViewLogin" />
-        <activity android:name=".Activity.ViewAlterarCadastro" />
-        <activity android:name=".Activity.ViewPagamento" />
-        <activity android:name=".Activity.ViewEmprestimo" />
-        <activity android:name=".Activity.ViewFinanciamento"></activity>
+        <activity
+            android:name=".Activity.ViewSplash"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
+            android:name=".Activity.ViewLogin"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".Activity.ViewAlterarCadastro"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
+            android:name=".Activity.ViewPagamento"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
+            android:name=".Activity.ViewEmprestimo"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
+            android:name=".Activity.ViewFinanciamento"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
     </application>
 
 </manifest>
