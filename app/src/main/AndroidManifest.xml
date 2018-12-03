@@ -17,7 +17,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.ViewSplash" />
-        <activity android:name=".Activity.ViewLogin"></activity>
+        <activity android:name=".Activity.ViewLogin" />
+        <activity android:name=".Activity.ViewAlterarCadastro" />
+        <activity android:name=".Activity.ViewPagamento" />
+        <activity android:name=".Activity.ViewEmprestimo" />
+        <activity android:name=".Activity.ViewFinanciamento"></activity>
     </application>
 
 </manifest>
