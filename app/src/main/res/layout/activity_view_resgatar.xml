@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.tb.traineebanking.Activity.ViewExtratoActivity"
+    tools:context="com.example.tb.traineebanking.Activity.ViewResgatarActivity"
     android:orientation="vertical"
     android:background="@drawable/background_apk">
 
@@ -31,7 +31,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Extrato"
+                android:text="Resgatar"
                 android:textColor="@color/black"
                 android:textSize="30sp"
                 android:textStyle="bold"
@@ -39,75 +39,13 @@
                 />
 
             <TextView
+                android:id="@+id/lblSelecionar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="Filtro"
+                android:layout_marginTop="20dp"
+                android:text="Selecione o investimento que deseja resgatar:"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
-
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="100">
-                <RadioButton
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="34"
-                    android:text="7 dias"
-                    android:textSize="18sp"/>
-
-                <RadioButton
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="33"
-                    android:text="15 dias"
-                    android:textSize="18sp"/>
-
-                <RadioButton
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="33"
-                    android:text="30 dias"
-                    android:textSize="18sp"/>
-
-            </RadioGroup>
-
-            <LinearLayout
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="100"
-                android:layout_marginTop="20dp"
-                android:layout_gravity="center_horizontal">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="33"
-                    android:text="Tudo"
-                    android:textSize="18sp"
-                    android:textColor="@color/black"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="33"
-                    android:text="Entrada"
-                    android:textSize="18sp"
-                    android:textColor="@color/black"
-                    android:gravity="center"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="33"
-                    android:text="Saída"
-                    android:textSize="18sp"
-                    android:textColor="@color/black"
-                    android:gravity="right"/>
-
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -115,42 +53,59 @@
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 android:background="@color/white"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:padding="5dp"
                 android:weightSum="100">
 
                 <TextView
-                    android:id="@+id/lblData"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="35"
-                    android:textColor="@color/black"
-                    android:gravity="center"
-                    android:text="Data"/>
-
-                <TextView
-                    android:id="@+id/lblHistorico"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="45"
-                    android:textColor="@color/black"
-                    android:gravity="center"
-                    android:text="Histórico"/>
-
-                <TextView
-                    android:id="@+id/lblValor"
+                    android:id="@+id/lblInvestimento"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="20"
                     android:textColor="@color/black"
                     android:gravity="center"
+                    android:text="Invest."/>
+
+                <TextView
+                    android:id="@+id/lblValor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="15"
+                    android:textColor="@color/black"
+                    android:gravity="center"
                     android:text="Valor"/>
 
+                <TextView
+                    android:id="@+id/lblJuros"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="15"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:text="Juros"/>
+
+                <TextView
+                    android:id="@+id/lblDataAplicacao"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="25"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:text="Data da Aplicação"/>
+
+                <TextView
+                    android:id="@+id/lblDataVencimento"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="25"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:text="Data de Vencimento"/>
 
             </LinearLayout>
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/rvExtrato"
+                android:id="@+id/rvResgate"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 

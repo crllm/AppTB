@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="@color/white"
+    android:layout_marginTop="5dp"
+    android:padding="5dp"
+    android:weightSum="100">
+
+    <TextView
+        android:id="@+id/lblInvestimento"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="20"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:text="Invest."/>
+
+    <TextView
+        android:id="@+id/lblValor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="15"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:text="Valor"/>
+
+    <TextView
+        android:id="@+id/lblJuros"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="15"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:text="Juros"/>
+
+    <TextView
+        android:id="@+id/lblDataAplicacao"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="25"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:text="Data da Aplicação"/>
+
+    <TextView
+        android:id="@+id/lblDataVencimento"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="25"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:text="Data de Vencimento"/>
+
+</LinearLayout>

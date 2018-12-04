@@ -1,7 +1,9 @@
-package com.example.tb.traineebanking;
+package com.example.tb.traineebanking.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.tb.traineebanking.R;
 
 public class ViewAplicacoesActivity extends AppCompatActivity {
 
