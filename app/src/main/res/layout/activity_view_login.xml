@@ -37,6 +37,7 @@
                 android:textSize="20sp"/>
 
             <EditText
+                android:id="@+id/idAgencia"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginTop="5dp"
@@ -61,6 +62,7 @@
                 android:textSize="20sp"/>
 
             <EditText
+                android:id="@+id/idConta"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_gravity="right"
@@ -90,6 +92,7 @@
                 android:textSize="20sp"/>
 
             <EditText
+                android:id="@+id/idSenha"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_gravity="right"
@@ -98,11 +101,12 @@
                 android:textSize="16sp"/>
 
             <Button
+                android:id="@+id/idbtnLogar"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="15dp"
                 android:textSize="20sp"
-                android:background="@drawable/buttonazul_border"
+
                 android:textColor="@color/white"
                 android:text="ACESSAR"/>
 

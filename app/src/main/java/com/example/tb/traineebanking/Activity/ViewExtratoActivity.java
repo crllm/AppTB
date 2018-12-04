@@ -18,7 +18,7 @@ public class ViewExtratoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_extrato);
 
-        mRecycler = findViewById(R.id.rvExtrato);
+        /*mRecycler = findViewById(R.id.rvExtrato);
 
         LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
 
@@ -26,6 +26,6 @@ public class ViewExtratoActivity extends AppCompatActivity {
         mRecycler.setHasFixedSize(true);
 
         mAdapter = new ExtratoAdapter(ViewExtratoActivity.this);
-        mRecycler.setAdapter(mAdapter);
+        mRecycler.setAdapter(mAdapter);*/
     }
 }
