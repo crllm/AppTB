@@ -1,16 +1,19 @@
 package com.example.tb.traineebanking.Models;
 
+import com.fasterxml.jackson.annotation.JsonRootName;
 import com.google.gson.annotations.SerializedName;
 
+
+@JsonRootName("LogarConta")
 public class LogarConta {
 
-    @SerializedName("agencia")
+    @SerializedName("Agencia")
     public int agencia;
 
-    @SerializedName("conta")
+    @SerializedName("Conta")
     public int conta;
 
-    @SerializedName("senha")
+    @SerializedName("Senha")
     public String senha;
 
 }

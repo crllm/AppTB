@@ -64,7 +64,7 @@ public class ViewLogin extends AppCompatActivity {
 
         LogarConta logarConta = pegarDados();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://localhost:60930")
+                .baseUrl("http://10.0.2.2:49283")
                 .addConverterFactory(GsonConverterFactory.create(JsonUtils.getGson(LogarConta.class)))
                 .build();
         API api = retrofit.create(API.class);

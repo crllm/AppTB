@@ -14,6 +14,6 @@ import retrofit2.http.POST;
 public interface API {
 
     @POST("/api/Conta")
-    Call<Conta> verificarAcesso(@Body LogarConta user);
+    Call<Conta> verificarAcesso(@Body LogarConta logarConta);
 
 }
