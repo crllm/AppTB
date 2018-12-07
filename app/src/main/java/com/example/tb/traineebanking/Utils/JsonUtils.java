@@ -14,6 +14,7 @@ public abstract class JsonUtils {
 
     public static Gson getGson(Type type) {
         return new GsonBuilder()
+                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
                 .registerTypeAdapter(type, new GsonRootSerializer())
                 .create();
     }

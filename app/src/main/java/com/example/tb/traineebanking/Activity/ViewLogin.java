@@ -1,8 +1,7 @@
 package com.example.tb.traineebanking.Activity;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -69,24 +68,24 @@ public class ViewLogin extends AppCompatActivity {
                 .build();
         API api = retrofit.create(API.class);
         Call<Conta> call = api.verificarAcesso(logarConta);
-
         call.enqueue(new Callback<Conta>() {
+
             @Override
             public void onResponse(Call<Conta> call, Response<Conta> response) {
 
-                if(response.body()!=null) {
-                    Toast.makeText(ViewLogin.this, "Deu Acesso", Toast.LENGTH_LONG).show();
+                Conta conta = response.body();
+                if(conta!=null) {
+                    Toast.makeText(ViewLogin.this, "SUCESSO TIO", Toast.LENGTH_LONG).show();
 
                 }
                 else{
-                    Toast.makeText(ViewLogin.this, "Deu ruim", Toast.LENGTH_LONG).show();
+                    Toast.makeText(ViewLogin.this, "Resposta Vazia", Toast.LENGTH_LONG).show();
                 }
-
             }
 
             @Override
             public void onFailure(Call<Conta> call, Throwable t) {
-
+                Toast.makeText(ViewLogin.this, "Deu ruim" + t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
 
