@@ -12,6 +12,7 @@ import com.example.tb.traineebanking.Models.Conta;
 import com.example.tb.traineebanking.Models.LogarConta;
 import com.example.tb.traineebanking.R;
 import com.example.tb.traineebanking.Utils.JsonUtils;
+import com.example.tb.traineebanking.Utils.ServiceGenerator;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -82,6 +83,7 @@ public class ViewLogin extends AppCompatActivity {
             @Override
             public void onResponse(Call<Conta> call, Response<Conta> response) {
                 if (response.body() != null) {
+                    ServiceGenerator.CONTA = response.body();
                     Toast.makeText(
                             ViewLogin.this,
                             "SUCESSO TIO",
