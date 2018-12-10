@@ -1,36 +1,86 @@
 package com.example.tb.traineebanking.Models;
 
-import com.fasterxml.jackson.annotation.JsonRootName;
-import com.google.gson.annotations.SerializedName;
-
-import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * Created by rafa_ on 04/12/2018.
+ */
 
-@JsonRootName("Boleto")
-public class Boleto implements Serializable {
+public class Boleto {
+    private int idBoleto;
+    private int numero;
+    private double valor;
+    private int status;
+    private Date dataBoleto;
+    private Date dataPagamento;
+    private Emprestimo emprestimo;
+    private String descricao;
 
-    @SerializedName("idBoleto")
-    public int idBoleto;
+    public Boleto() {
 
-    @SerializedName("Numero")
-    public int numero;
+    }
 
-    @SerializedName("Valor")
-    public double valor;
+    public int getIdBoleto() {
+        return idBoleto;
+    }
 
-    @SerializedName("Status")
-    public int status;
+    public int getNumero() {
+        return numero;
+    }
 
-    @SerializedName("DataBoleto")
-    public Date dataBoleto;
+    public double getValor() {
+        return valor;
+    }
 
-    @SerializedName("DataPagamento")
-    public Date dataPagamento;
+    public int getStatus() {
+        return status;
+    }
 
-    @SerializedName("Emprestimo_idEmprestimo")
-    public Emprestimo emprestimo;
+    public Date getDataBoleto() {
+        return dataBoleto;
+    }
 
-    @SerializedName("Descricao")
-    public String descricao;
+    public Date getDataPagamento() {
+        return dataPagamento;
+    }
+
+    public Emprestimo getEmprestimo() {
+        return emprestimo;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setIdBoleto(int idBoleto) {
+        this.idBoleto = idBoleto;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public void setDataBoleto(Date dataBoleto) {
+        this.dataBoleto = dataBoleto;
+    }
+
+    public void setDataPagamento(Date dataPagamento) {
+        this.dataPagamento = dataPagamento;
+    }
+
+    public void setEmprestimo(Emprestimo emprestimo) {
+        this.emprestimo = emprestimo;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 }

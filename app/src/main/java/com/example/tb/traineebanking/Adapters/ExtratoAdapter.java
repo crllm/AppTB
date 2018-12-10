@@ -8,18 +8,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.tb.traineebanking.Interface.AdapterPositionOnClickListener;
+import com.example.tb.traineebanking.Models.Extrato;
 import com.example.tb.traineebanking.R;
 
-/**
- * Created by rafa_ on 04/12/2018.
- */
+import java.util.List;
 
 public class ExtratoAdapter extends RecyclerView.Adapter<ExtratoAdapter.viewHolder> {
 
     private Context mContext;
+    public List<Extrato> mList;
 
-    public ExtratoAdapter(Context context) {
+    public ExtratoAdapter(Context context, List<Extrato> list) {
         this.mContext = context;
+        this.mList = list;
     }
 
     @NonNull
@@ -34,9 +36,11 @@ public class ExtratoAdapter extends RecyclerView.Adapter<ExtratoAdapter.viewHold
 
     @Override
     public void onBindViewHolder(@NonNull ExtratoAdapter.viewHolder viewHolder, int i) {
-        viewHolder.lblData.setText("30/11/2018 08:36:22");
-        viewHolder.lblHistorico.setText("Empréstimo - Financiamento");
-        viewHolder.lblValor.setText("1000");
+        Extrato extrato = mList.get(i);
+
+        viewHolder.lblData.setText(extrato.getData().toString());
+        viewHolder.lblHistorico.setText(extrato.getDado());
+        viewHolder.lblValor.setText((int) extrato.getValor());
     }
 
     @Override

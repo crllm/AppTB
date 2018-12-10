@@ -14,4 +14,28 @@ public class Extrato {
     public Extrato() {
 
     }
+
+    public Date getData() {
+        return data;
+    }
+
+    public String getDado() {
+        return dado;
+    }
+
+    public double getValor() {
+        return valor;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
+    }
+
+    public void setDado(String dado) {
+        this.dado = dado;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
 }
