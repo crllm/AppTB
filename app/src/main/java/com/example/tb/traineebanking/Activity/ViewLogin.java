@@ -12,6 +12,8 @@ import com.example.tb.traineebanking.Models.Conta;
 import com.example.tb.traineebanking.Models.LogarConta;
 import com.example.tb.traineebanking.R;
 import com.example.tb.traineebanking.Utils.JsonUtils;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.util.HashMap;
 
@@ -63,18 +65,22 @@ public class ViewLogin extends AppCompatActivity {
     public void verificarAcesso() {
         LogarConta logarConta = pegarDados();
 
+        Gson gson = new GsonBuilder()
+                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
+
         Retrofit retrofit = new Retrofit
                 .Builder()
                 .baseUrl("http://10.0.2.2:49283")
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
         API api = retrofit.create(API.class);
-        Call<Conta>  call = api.verificarAcesso(logarConta);
-        call.enqueue(new Callback<Conta> () {
+        Call<Conta> call = api.verificarAcesso(logarConta);
+        call.enqueue(new Callback<Conta>() {
+
 
             @Override
-            public void onResponse(Call<Conta>  call, Response<Conta> response) {
+            public void onResponse(Call<Conta> call, Response<Conta> response) {
                 if (response.body() != null) {
                     Toast.makeText(
                             ViewLogin.this,
@@ -92,7 +98,7 @@ public class ViewLogin extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<Conta>  call, Throwable t) {
+            public void onFailure(Call<Conta> call, Throwable t) {
                 Toast.makeText(
                         ViewLogin.this,
                         "Deu ruim" + t.getMessage(),
@@ -100,6 +106,5 @@ public class ViewLogin extends AppCompatActivity {
                 ).show();
             }
         });
-
     }
 }
