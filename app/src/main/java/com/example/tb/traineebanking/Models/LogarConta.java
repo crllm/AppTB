@@ -18,12 +18,4 @@ public class LogarConta implements Serializable {
     @SerializedName("Senha")
     public String senha;
 
-    public LogarConta() {
-
-    }
-    public LogarConta(int agencia, int conta, String senha) {
-        this.agencia = agencia;
-        this.conta = conta;
-        this.senha = senha;
-    }
 }

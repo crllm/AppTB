@@ -13,6 +13,8 @@ import com.example.tb.traineebanking.Models.LogarConta;
 import com.example.tb.traineebanking.R;
 import com.example.tb.traineebanking.Utils.JsonUtils;
 
+import java.util.HashMap;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -26,7 +28,6 @@ public class ViewLogin extends AppCompatActivity {
     private EditText conta;
     private EditText senha;
     private Button btnLogar;
-
 
 
     @Override
@@ -48,7 +49,7 @@ public class ViewLogin extends AppCompatActivity {
 
     }
 
-    private LogarConta pegarDados(){
+    private LogarConta pegarDados() {
 
         LogarConta logarConta = new LogarConta();
         logarConta.agencia = Integer.parseInt(agencia.getText().toString());
@@ -59,32 +60,39 @@ public class ViewLogin extends AppCompatActivity {
 
     }
 
-    private void verificarAcesso() {
-
+    public void verificarAcesso() {
         LogarConta logarConta = pegarDados();
-        Retrofit retrofit = new Retrofit.Builder()
+
+        Retrofit retrofit = new Retrofit
+                .Builder()
                 .baseUrl("http://10.0.2.2:49283")
                 .addConverterFactory(GsonConverterFactory.create(JsonUtils.getGson(LogarConta.class)))
                 .build();
+
         API api = retrofit.create(API.class);
-        Call<Conta> call = api.verificarAcesso(logarConta);
-        call.enqueue(new Callback<Conta>() {
+        Call<HashMap<String, String>> call = api.verificarAcesso(logarConta);
+        call.enqueue(new Callback<HashMap<String, String>>() {
 
             @Override
-            public void onResponse(Call<Conta> call, Response<Conta> response) {
+            public void onResponse(Call<HashMap<String, String>> call, Response<HashMap<String, String>> response) {
+                if (response.body() != null) {
+                    Toast.makeText(
+                            ViewLogin.this,
+                            "SUCESSO TIO",
+                            Toast.LENGTH_LONG
+                    ).show();
 
-                Conta conta = response.body();
-                if(conta!=null) {
-                    Toast.makeText(ViewLogin.this, "SUCESSO TIO", Toast.LENGTH_LONG).show();
-
-                }
-                else{
-                    Toast.makeText(ViewLogin.this, "Resposta Vazia", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(
+                            ViewLogin.this,
+                            "Resposta Vazia",
+                            Toast.LENGTH_LONG
+                    ).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<Conta> call, Throwable t) {
+            public void onFailure(Call<HashMap<String, String>> call, Throwable t) {
                 Toast.makeText(ViewLogin.this, "Deu ruim" + t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
