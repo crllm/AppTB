@@ -39,7 +39,5 @@ public class Endereco implements Serializable {
     @SerializedName("DataRegistroEndereco")
     public Date dataRegistroEndereco;
 
-    public Endereco() {
 
-    }
 }

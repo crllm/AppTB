@@ -15,7 +15,7 @@ public class Agencia implements Serializable {
     public int idAgencia;
 
     @SerializedName("Endereco")
-    private Endereco endereco;
+    public Endereco endereco;
 
 
 }
