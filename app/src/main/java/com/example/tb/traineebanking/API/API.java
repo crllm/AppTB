@@ -13,6 +13,6 @@ import retrofit2.http.POST;
 public interface API {
 
     @POST("/api/Conta")
-    Call<HashMap<String, String>>  verificarAcesso(@Body LogarConta logarConta);
+    Call<Conta>  verificarAcesso(@Body LogarConta logarConta);
 
 }

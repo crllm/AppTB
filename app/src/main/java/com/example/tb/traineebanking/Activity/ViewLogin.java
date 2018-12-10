@@ -66,15 +66,15 @@ public class ViewLogin extends AppCompatActivity {
         Retrofit retrofit = new Retrofit
                 .Builder()
                 .baseUrl("http://10.0.2.2:49283")
-                .addConverterFactory(GsonConverterFactory.create(JsonUtils.getGson(LogarConta.class)))
+                .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         API api = retrofit.create(API.class);
-        Call<HashMap<String, String>> call = api.verificarAcesso(logarConta);
-        call.enqueue(new Callback<HashMap<String, String>>() {
+        Call<Conta>  call = api.verificarAcesso(logarConta);
+        call.enqueue(new Callback<Conta> () {
 
             @Override
-            public void onResponse(Call<HashMap<String, String>> call, Response<HashMap<String, String>> response) {
+            public void onResponse(Call<Conta>  call, Response<Conta> response) {
                 if (response.body() != null) {
                     Toast.makeText(
                             ViewLogin.this,
@@ -92,8 +92,12 @@ public class ViewLogin extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<HashMap<String, String>> call, Throwable t) {
-                Toast.makeText(ViewLogin.this, "Deu ruim" + t.getMessage(), Toast.LENGTH_LONG).show();
+            public void onFailure(Call<Conta>  call, Throwable t) {
+                Toast.makeText(
+                        ViewLogin.this,
+                        "Deu ruim" + t.getMessage(),
+                        Toast.LENGTH_LONG
+                ).show();
             }
         });
 
