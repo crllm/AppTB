@@ -58,6 +58,7 @@ public class ViewPagamento extends AppCompatActivity implements View.OnClickList
         findViewById(R.id.btnPesquisar).setOnClickListener(this);
         findViewById(R.id.btnPagar).setOnClickListener(this);
         findViewById(R.id.btnCancelar).setOnClickListener(this);
+        findViewById(R.id.btnExibirSaldo).setOnClickListener(this);
 
         lblSaldo.setText(String.format(("R$ ") + "%.2f", ServiceGenerator.CONTA.saldo));
     }
@@ -79,6 +80,10 @@ public class ViewPagamento extends AppCompatActivity implements View.OnClickList
 
             case R.id.btnCancelar:
                 esconderCampos();
+                break;
+
+            case R.id.btnExibirSaldo:
+                exibirSaldo();
                 break;
         }
     }
@@ -117,6 +122,7 @@ public class ViewPagamento extends AppCompatActivity implements View.OnClickList
     }
 
     public void limparCampos() {
+        txtCodigo.getText().clear();
         txtDescricao.getText().clear();
         txtDataVencimento.getText().clear();
         txtValorBoleto.getText().clear();
@@ -134,6 +140,15 @@ public class ViewPagamento extends AppCompatActivity implements View.OnClickList
         linearBotoes.setVisibility(View.INVISIBLE);
 
         limparCampos();
+    }
+
+    public void exibirSaldo() {
+        if (lblSaldo.getVisibility() == View.VISIBLE) {
+            lblSaldo.setVisibility(View.INVISIBLE);
+        } else {
+            lblSaldo.setVisibility(View.VISIBLE);
+        }
+
     }
 
     /*private void userSignup() {
