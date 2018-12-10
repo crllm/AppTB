@@ -47,11 +47,13 @@
                 android:textSize="18sp" />
 
             <RadioGroup
+                android:id="@+id/rgFiltro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="100">
                 <RadioButton
+                    android:id="@+id/rb7Dias"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="34"
@@ -59,6 +61,7 @@
                     android:textSize="18sp"/>
 
                 <RadioButton
+                    android:id="@+id/rb15Dias"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="33"
@@ -66,6 +69,7 @@
                     android:textSize="18sp"/>
 
                 <RadioButton
+                    android:id="@+id/rb30Dias"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="33"
@@ -82,6 +86,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_gravity="center_horizontal">
                 <TextView
+                    android:id="@+id/lblTudo"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="33"
@@ -90,6 +95,7 @@
                     android:textColor="@color/black"/>
 
                 <TextView
+                    android:id="@+id/lblEntrada"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="33"
@@ -99,6 +105,7 @@
                     android:gravity="center"/>
 
                 <TextView
+                    android:id="@+id/lblSaida"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="33"
