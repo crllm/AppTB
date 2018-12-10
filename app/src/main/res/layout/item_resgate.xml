@@ -1,58 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:gravity="center_vertical"
-    android:background="@color/white"
-    android:layout_marginTop="5dp"
-    android:padding="5dp"
-    android:weightSum="100">
+    android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/lblInvestimento"
-        android:layout_width="0dp"
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="20"
-        android:textColor="@color/black"
-        android:gravity="center"
-        android:text="Invest."/>
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:stretchColumns="1">
 
-    <TextView
-        android:id="@+id/lblValor"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="15"
-        android:textColor="@color/black"
-        android:gravity="center"
-        android:text="Valor"/>
+        <TableRow>
 
-    <TextView
-        android:id="@+id/lblJuros"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="15"
-        android:textColor="@color/black"
-        android:gravity="center"
-        android:text="Juros"/>
+            <TextView
+                android:layout_column="1"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Investimento"
+                android:textColor="@color/black" />
 
-    <TextView
-        android:id="@+id/lblDataAplicacao"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="25"
-        android:textColor="@color/black"
-        android:gravity="center"
-        android:text="Data da Aplicação"/>
+            <TextView
+                android:layout_column="2"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Valor"
+                android:textColor="@color/black" />
 
-    <TextView
-        android:id="@+id/lblDataVencimento"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="25"
-        android:textColor="@color/black"
-        android:gravity="center"
-        android:text="Data de Vencimento"/>
+            <TextView
+                android:layout_column="3"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Juros"
+                android:textColor="@color/black" />
 
-</LinearLayout>
+            <TextView
+                android:layout_height="match_parent"
+                android:layout_column="4"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Data da \nAplicação"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:layout_column="5"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Data de \nVencimento"
+                android:textColor="@color/black" />
+        </TableRow>
+
+
+    </TableLayout>
+</ScrollView>

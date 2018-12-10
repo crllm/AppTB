@@ -4,39 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.tb.traineebanking.Activity.ViewResgatarActivity"
+    android:background="@drawable/background_apk"
     android:orientation="vertical"
-    android:background="@drawable/background_apk">
+    tools:context="com.example.tb.traineebanking.Activity.ViewResgatarActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:gravity="center_horizontal"
+        android:orientation="vertical"
         android:padding="5dp">
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/logo_tb_azul"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:src="@drawable/logo_tb_azul" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
             android:layout_marginLeft="5dp"
+            android:layout_marginTop="8dp"
             android:layout_marginRight="5dp"
             android:background="@drawable/screen_border"
             android:orientation="vertical"
             android:padding="20dp">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:text="Resgatar"
                 android:textColor="@color/black"
                 android:textSize="30sp"
-                android:textStyle="bold"
-                android:gravity="center_horizontal"
-                />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/lblSelecionar"
@@ -50,10 +52,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:background="@color/white"
                 android:layout_marginTop="5dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
                 android:padding="5dp"
                 android:weightSum="100">
 
@@ -62,52 +64,52 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="20"
-                    android:textColor="@color/black"
                     android:gravity="center"
-                    android:text="Invest."/>
+                    android:text="Invest."
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:id="@+id/lblValor"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="15"
-                    android:textColor="@color/black"
                     android:gravity="center"
-                    android:text="Valor"/>
+                    android:text="Valor"
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:id="@+id/lblJuros"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="15"
-                    android:textColor="@color/black"
                     android:gravity="center"
-                    android:text="Juros"/>
+                    android:text="Juros"
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:id="@+id/lblDataAplicacao"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="25"
-                    android:textColor="@color/black"
                     android:gravity="center"
-                    android:text="Data da Aplicação"/>
+                    android:text="Data da Aplicação"
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:id="@+id/lblDataVencimento"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="25"
-                    android:textColor="@color/black"
                     android:gravity="center"
-                    android:text="Data de Vencimento"/>
+                    android:text="Data de Vencimento"
+                    android:textColor="@color/black" />
 
             </LinearLayout>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rvResgate"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent" />
 
         </LinearLayout>
 

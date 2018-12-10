@@ -8,7 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.tb.traineebanking.Models.Investimento;
 import com.example.tb.traineebanking.R;
+
+import java.util.List;
 
 /**
  * Created by rafa_ on 04/12/2018.
@@ -16,6 +19,8 @@ import com.example.tb.traineebanking.R;
 
 public class ResgateAdapter extends RecyclerView.Adapter<ResgateAdapter.viewHolder> {
     private Context mContext;
+    private List<Investimento> mList;
+
 
     public ResgateAdapter(Context context) {
         this.mContext = context;
