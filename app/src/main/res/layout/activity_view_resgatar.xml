@@ -41,7 +41,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/lblSelecionar"
+                android:id="@+id/txtSelecionar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -60,7 +60,7 @@
                 android:weightSum="100">
 
                 <TextView
-                    android:id="@+id/lblInvestimento"
+                    android:id="@+id/txtInvestimento"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="20"
@@ -69,7 +69,7 @@
                     android:textColor="@color/black" />
 
                 <TextView
-                    android:id="@+id/lblValor"
+                    android:id="@+id/txtValor"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="15"
@@ -78,7 +78,7 @@
                     android:textColor="@color/black" />
 
                 <TextView
-                    android:id="@+id/lblJuros"
+                    android:id="@+id/txtJuros"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="15"
@@ -87,7 +87,7 @@
                     android:textColor="@color/black" />
 
                 <TextView
-                    android:id="@+id/lblDataAplicacao"
+                    android:id="@+id/txtDataAplicacao"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="25"
@@ -96,7 +96,7 @@
                     android:textColor="@color/black" />
 
                 <TextView
-                    android:id="@+id/lblDataVencimento"
+                    android:id="@+id/txtDataVencimento"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="25"

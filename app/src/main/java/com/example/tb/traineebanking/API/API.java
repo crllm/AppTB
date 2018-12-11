@@ -25,7 +25,7 @@ public interface API {
     Call<List<Emprestimo>> getEmprestimos();
 
     @GET("/investimentos")
-    Call<List<Investimento>> getInvestimentos();
+    Call<List<Investimento>> getInvestimentos(@Body Investimento investimento);
 
     @GET("/boletos")
     Call<List<Boleto>> getBoletos();

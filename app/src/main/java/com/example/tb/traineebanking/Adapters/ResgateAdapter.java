@@ -8,9 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.tb.traineebanking.Interface.AdapterPositionOnClickListener;
 import com.example.tb.traineebanking.Models.Investimento;
 import com.example.tb.traineebanking.R;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,11 +24,23 @@ import java.util.List;
 public class ResgateAdapter extends RecyclerView.Adapter<ResgateAdapter.viewHolder> {
     private Context mContext;
     private List<Investimento> mList;
+    private AdapterPositionOnClickListener adapterPositionOnClickListener;
 
 
-    public ResgateAdapter(Context context) {
-        this.mContext = context;
+    public void setAdapterPositionOnClickListener(AdapterPositionOnClickListener click) {
+        adapterPositionOnClickListener = click;
+
     }
+
+    public ResgateAdapter(Context mContext, List<Investimento> mList) {
+        this.mContext = mContext;
+        this.mList = mList;
+    }
+
+    public Investimento getInvestimento(int position) {
+        return mList.get(position);
+    }
+
 
     @NonNull
     @Override
@@ -38,33 +54,49 @@ public class ResgateAdapter extends RecyclerView.Adapter<ResgateAdapter.viewHold
 
     @Override
     public void onBindViewHolder(@NonNull ResgateAdapter.viewHolder viewHolder, int i) {
-        viewHolder.lblInvestimento.setText("Poupança");
-        viewHolder.lblValor.setText("1000");
-        viewHolder.lblJuros.setText("10");
-        viewHolder.lblDataAplicacao.setText("30/11/2018 15:30:39");
-        viewHolder.lblDataVencimento.setText("30/11/2019 15:30:39");
+        Investimento investimento = mList.get(i);
+        DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+
+        String valor = Double.toString(investimento.valor);
+        String juros = Double.toString(investimento.juros);
+        String dataInvestimento = df.format(investimento.dataInvestimento);
+        String dataTermino = df.format(investimento.dataTermino);
+
+        viewHolder.txtInvestimento.setText(investimento.tipo);
+        viewHolder.txtValor.setText(valor);
+        viewHolder.txtJuros.setText(juros);
+        viewHolder.txtDataAplicacao.setText(dataInvestimento);
+        viewHolder.txtDataVencimento.setText(dataTermino);
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        return mList.size();
     }
 
-    public class viewHolder extends RecyclerView.ViewHolder {
-        public TextView lblInvestimento;
-        public TextView lblValor;
-        public TextView lblJuros;
-        public TextView lblDataAplicacao;
-        public TextView lblDataVencimento;
+    public class viewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        public TextView txtInvestimento;
+        public TextView txtValor;
+        public TextView txtJuros;
+        public TextView txtDataAplicacao;
+        public TextView txtDataVencimento;
 
         public viewHolder(View itemView) {
             super(itemView);
 
-            lblInvestimento = itemView.findViewById(R.id.lblInvestimento);
-            lblValor = itemView.findViewById(R.id.lblValor);
-            lblJuros = itemView.findViewById(R.id.lblJuros);
-            lblDataAplicacao = itemView.findViewById(R.id.lblDataAplicacao);
-            lblDataVencimento = itemView.findViewById(R.id.lblDataVencimento);
+            txtInvestimento = itemView.findViewById(R.id.txtInvestimento);
+            txtValor = itemView.findViewById(R.id.txtValor);
+            txtJuros = itemView.findViewById(R.id.txtJuros);
+            txtDataAplicacao = itemView.findViewById(R.id.txtDataAplicacao);
+            txtDataVencimento = itemView.findViewById(R.id.txtDataVencimento);
+        }
+
+        @Override
+        public void onClick(View v) {
+            if (adapterPositionOnClickListener != null) {
+                adapterPositionOnClickListener.setAdapterPositionOnClickListener(v, getPosition());
+
+            }
         }
     }
 }
