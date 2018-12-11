@@ -76,7 +76,7 @@ public class ViewHome extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if(i == 0){
-                Valor.setText(String.valueOf(("R$ ") + (ServiceGenerator.CONTA.saldo)));
+                Valor.setText(String.format(("R$ ") + "%.2f", ServiceGenerator.CONTA.saldo));
                 i=1;}
             else
             if(i == 1){

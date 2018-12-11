@@ -87,17 +87,17 @@ public class ViewLogin extends AppCompatActivity {
                     ServiceGenerator.CONTA = response.body();
                     Toast.makeText(
                             ViewLogin.this,
-                            "SUCESSO TIO",
+                            "Acessado com sucesso",
                             Toast.LENGTH_LONG
                     ).show();
                     Intent i = new Intent(ViewLogin.this, ViewHome.class);
                     startActivity(i);
-
+                    finish();
 
                 } else {
                     Toast.makeText(
                             ViewLogin.this,
-                            "Resposta Vazia",
+                            "Dados estão incorretos",
                             Toast.LENGTH_LONG
                     ).show();
                 }
@@ -107,7 +107,7 @@ public class ViewLogin extends AppCompatActivity {
             public void onFailure(Call<Conta> call, Throwable t) {
                 Toast.makeText(
                         ViewLogin.this,
-                        "Deu ruim" + t.getMessage(),
+                        "Erro, tente acessar mais tarde" + t.getMessage(),
                         Toast.LENGTH_LONG
                 ).show();
             }
