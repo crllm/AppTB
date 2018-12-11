@@ -3,6 +3,7 @@ package com.example.tb.traineebanking.API;
 import com.example.tb.traineebanking.Models.Boleto;
 import com.example.tb.traineebanking.Models.Conta;
 import com.example.tb.traineebanking.Models.Emprestimo;
+import com.example.tb.traineebanking.Models.Extrato;
 import com.example.tb.traineebanking.Models.Investimento;
 import com.example.tb.traineebanking.Models.LogarConta;
 
@@ -18,16 +19,19 @@ import retrofit2.http.POST;
 
 public interface API {
 
-    @POST("/api/Conta")
+    @POST("/api/conta")
     Call<Conta>  verificarAcesso(@Body LogarConta logarConta);
 
-    @GET("/emprestimos")
-    Call<List<Emprestimo>> getEmprestimos();
+    @POST("api/extrato")
+    Call<List<Extrato>> getExtrato(@Body Conta conta);
 
-    @GET("/investimentos")
-    Call<List<Investimento>> getInvestimentos();
+    @POST("api/emprestimo")
+    Call<List<Emprestimo>> getEmprestimos(@Body Conta conta);
 
-    @GET("/boletos")
-    Call<List<Boleto>> getBoletos();
+    @POST("api/investimento")
+    Call<List<Investimento>> getInvestimentos(@Body Conta conta);
+
+    @POST("api/boleto")
+    Call<List<Boleto>> getBoletos(@Body Conta conta);
 
 }

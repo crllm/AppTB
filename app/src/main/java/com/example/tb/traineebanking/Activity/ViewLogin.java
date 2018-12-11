@@ -80,7 +80,6 @@ public class ViewLogin extends AppCompatActivity {
         Call<Conta> call = api.verificarAcesso(logarConta);
         call.enqueue(new Callback<Conta>() {
 
-
             @Override
             public void onResponse(Call<Conta> call, Response<Conta> response) {
                 if (response.body() != null) {

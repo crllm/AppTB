@@ -12,6 +12,7 @@ import com.example.tb.traineebanking.Interface.AdapterPositionOnClickListener;
 import com.example.tb.traineebanking.Models.Extrato;
 import com.example.tb.traineebanking.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ExtratoAdapter extends RecyclerView.Adapter<ExtratoAdapter.viewHolder> {
@@ -24,28 +25,27 @@ public class ExtratoAdapter extends RecyclerView.Adapter<ExtratoAdapter.viewHold
         this.mList = list;
     }
 
-    @NonNull
     @Override
-    public ExtratoAdapter.viewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public viewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         LayoutInflater inflater = LayoutInflater.from(mContext);
         View holder = inflater.inflate(R.layout.item_extrato, viewGroup, false);
-        ExtratoAdapter.viewHolder viewHolder = new ExtratoAdapter.viewHolder(holder);
+        viewHolder viewHolder = new viewHolder(holder);
 
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ExtratoAdapter.viewHolder viewHolder, int i) {
+    public void onBindViewHolder(viewHolder viewHolder, int i) {
         Extrato extrato = mList.get(i);
 
         viewHolder.lblData.setText(extrato.getData().toString());
         viewHolder.lblHistorico.setText(extrato.getDado());
-        viewHolder.lblValor.setText((int) extrato.getValor());
+        viewHolder.lblValor.setText(Double.toString(extrato.getValor()));
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        return mList.size();
     }
 
     public class viewHolder extends RecyclerView.ViewHolder {

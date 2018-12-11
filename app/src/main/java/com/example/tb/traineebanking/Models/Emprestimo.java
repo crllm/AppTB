@@ -1,18 +1,32 @@
 package com.example.tb.traineebanking.Models;
 
+import com.fasterxml.jackson.annotation.JsonRootName;
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
 import java.util.Date;
+@JsonRootName("Emprestimo")
+public class Emprestimo implements Serializable {
 
-/**
- * Created by rafa_ on 04/12/2018.
- */
-
-public class Emprestimo {
+    @SerializedName("IdEmprestimo")
     private int idEmprestimo;
+
+    @SerializedName("Valor")
     private double valor;
+
+    @SerializedName("Tipo")
     private String tipo;
+
+    @SerializedName("Juros")
     private double juros;
+
+    @SerializedName("DataEmprestimo")
     private Date dataEmprestimo;
+
+    @SerializedName("Conta")
     private Conta conta;
+
+    @SerializedName("Status")
     private int status;
 
     public Emprestimo() {
