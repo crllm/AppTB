@@ -60,7 +60,7 @@ public class ViewResgatarActivity extends AppCompatActivity implements AdapterPo
                 .build();
 
         API api = retrofit.create(API.class);
-        Call<List<Investimento>> call = api.getInvestimentos(ServiceGenerator.INVESTIMENTO);
+        Call<List<Investimento>> call = api.getInvestimentos();
 
         call.enqueue(new Callback<List<Investimento>>() {
             @Override
