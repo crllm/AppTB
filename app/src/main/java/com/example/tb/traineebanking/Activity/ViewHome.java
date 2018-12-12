@@ -25,7 +25,7 @@ public class ViewHome extends AppCompatActivity {
     private ImageView Investimentos;
     private ImageView Extrato;
     private ImageView Saldo;
-    private int i=0;
+    private int i = 0;
 
     private View.OnClickListener vAlterarCadastro = new View.OnClickListener() {
         @Override
@@ -75,14 +75,8 @@ public class ViewHome extends AppCompatActivity {
     private View.OnClickListener vSaldo = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if(i == 0){
-                Valor.setText(String.format(("R$ ") + "%.2f", ServiceGenerator.CONTA.saldo));
-                i=1;}
-            else
-            if(i == 1){
-                Valor.setText(String.valueOf("R$ *****"));
-                i=0;
-            }
+            Valor.setVisibility(v.VISIBLE);
+            Valor.setText(String.format(("R$ ") + "%.2f", ServiceGenerator.CONTA.saldo));
         }
     };
 
@@ -105,10 +99,10 @@ public class ViewHome extends AppCompatActivity {
         String str = ServiceGenerator.CONTA.cliente.nome;
         String[] splited = str.split("\\s+");
 
-        Nome.setText(("Olá, ")+(splited[0])+(" ")+(splited[splited.length-1]));
+        Nome.setText(("Olá, ") + (splited[0]) + (" ") + (splited[splited.length - 1]));
         Valor.setText(String.valueOf("R$ *****"));
-        Endereco.setText((ServiceGenerator.CONTA.agencia.endereco.rua)+(" ,")+(ServiceGenerator.CONTA.agencia.endereco.numero));
-        Cidade.setText((ServiceGenerator.CONTA.agencia.endereco.cidade)+(" ,")+(ServiceGenerator.CONTA.agencia.endereco.estado));
+        Endereco.setText((ServiceGenerator.CONTA.agencia.endereco.rua) + (" ,") + (ServiceGenerator.CONTA.agencia.endereco.numero));
+        Cidade.setText((ServiceGenerator.CONTA.agencia.endereco.cidade) + (" ,") + (ServiceGenerator.CONTA.agencia.endereco.estado));
 
         AlterarDados.setOnClickListener(vAlterarCadastro);
         Pagamentos.setOnClickListener(vPagamento);

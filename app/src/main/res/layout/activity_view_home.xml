@@ -208,6 +208,7 @@
             android:layout_marginBottom="20dp"
             android:fontFamily="sans-serif-thin"
             android:gravity="center_horizontal"
+            android:visibility="invisible"
             android:text="R$ + DE 8000"
             android:textColor="@color/black"
             android:textSize="28sp"
