@@ -6,18 +6,14 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * Created by rafa_ on 04/12/2018.
- */
 @JsonRootName("Investimento")
-
 public class Investimento implements Serializable {
 
     @SerializedName("IdInvestimento")
     public int idInvestimento;
 
     @SerializedName("Valor")
-    public Double valor;
+    public double valor;
 
     @SerializedName("DataInvestimento")
     public Date dataInvestimento;

@@ -52,13 +52,28 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/btnVisibleSaldo"
+                <RelativeLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="20dp"
-                    android:src="@drawable/round_visibility_black_18dp" />
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/btnVisibleSaldo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="20dp"
+                        android:src="@drawable/round_visibility_black_18dp" />
+
+                    <ImageView
+                        android:id="@+id/btnInvisibleSaldo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="20dp"
+                        android:src="@drawable/round_visibility_off_black_18dp"
+                        android:visibility="invisible"/>
+
+                </RelativeLayout>
 
                 <TextView
                     android:id="@+id/txtSaldo"
@@ -88,13 +103,30 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/btnVisibleInvestimento"
+                <RelativeLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="20dp"
-                    android:src="@drawable/round_visibility_black_18dp" />
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/btnVisibleInvestimento"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="20dp"
+                        android:src="@drawable/round_visibility_black_18dp" />
+
+                    <ImageView
+                        android:id="@+id/btnInvisibleInvestimento"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="20dp"
+                        android:src="@drawable/round_visibility_off_black_18dp"
+                        android:visibility="invisible"/>
+
+                </RelativeLayout>
+
+
 
                 <TextView
                     android:id="@+id/txtTotalInvestido"

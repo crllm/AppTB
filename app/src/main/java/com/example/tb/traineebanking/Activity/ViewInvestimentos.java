@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -28,10 +29,15 @@ public class ViewInvestimentos extends AppCompatActivity {
     private TextView saldo;
     private TextView totalInvestido;
     private ImageView btnVisibleSaldo;
+    private ImageView btnInvisibleSaldo;
     private ImageView btnVisibleInvestimento;
+    private ImageView btnInvisibleInvestimento;
     private ImageView btnResgatar;
     private ImageView btnDetalhes;
     private ImageView btnAplicar;
+
+    private List<Investimento> mList = new ArrayList<>();
+    private double totalInv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +47,9 @@ public class ViewInvestimentos extends AppCompatActivity {
         saldo = findViewById(R.id.txtSaldo);
         totalInvestido = findViewById(R.id.txtTotalInvestido);
         btnVisibleSaldo = findViewById(R.id.btnVisibleSaldo);
+        btnInvisibleSaldo = findViewById(R.id.btnInvisibleSaldo);
         btnVisibleInvestimento = findViewById(R.id.btnVisibleInvestimento);
+        btnInvisibleInvestimento = findViewById(R.id.btnInvisibleInvestimento);
         btnResgatar = findViewById(R.id.btnResgatar);
         btnDetalhes = findViewById(R.id.btnDetalhes);
         btnAplicar = findViewById(R.id.btnAplicar);
@@ -49,8 +57,39 @@ public class ViewInvestimentos extends AppCompatActivity {
         btnVisibleSaldo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saldo.setVisibility(v.VISIBLE);
+                try {
+                    new Thread().sleep(200);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                btnVisibleSaldo.setVisibility(v.INVISIBLE);
+                btnInvisibleSaldo.setVisibility(v.VISIBLE);
+
                 saldo.setText("R$ " + String.valueOf(ServiceGenerator.CONTA.saldo));
+                saldo.setVisibility(v.VISIBLE);
+
+            }
+        });
+
+        btnInvisibleSaldo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnInvisibleSaldo.setVisibility(v.INVISIBLE);
+                btnVisibleSaldo.setVisibility(v.VISIBLE);
+
+                saldo.setVisibility(v.INVISIBLE);
+
+            }
+        });
+
+        saldo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnInvisibleSaldo.setVisibility(v.INVISIBLE);
+                btnVisibleSaldo.setVisibility(v.VISIBLE);
+
+                saldo.setVisibility(v.INVISIBLE);
 
             }
         });
@@ -58,8 +97,40 @@ public class ViewInvestimentos extends AppCompatActivity {
         btnVisibleInvestimento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                totalInvestido.setVisibility(v.VISIBLE);
                 InvestimentoAPI();
+
+                try {
+                    new Thread().sleep(200);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                btnVisibleInvestimento.setVisibility(v.INVISIBLE);
+                btnInvisibleInvestimento.setVisibility(v.VISIBLE);
+
+                totalInvestido.setVisibility(v.VISIBLE);
+            }
+        });
+
+        btnInvisibleInvestimento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnInvisibleInvestimento.setVisibility(v.INVISIBLE);
+                btnVisibleInvestimento.setVisibility(v.VISIBLE);
+
+                totalInvestido.setVisibility(v.INVISIBLE);
+                totalInv = 0;
+            }
+        });
+
+        totalInvestido.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnInvisibleInvestimento.setVisibility(v.INVISIBLE);
+                btnVisibleInvestimento.setVisibility(v.VISIBLE);
+
+                totalInvestido.setVisibility(v.INVISIBLE);
+                totalInv = 0;
             }
         });
 
@@ -100,18 +171,19 @@ public class ViewInvestimentos extends AppCompatActivity {
                 .build();
 
         API api = retrofit.create(API.class);
-        Call<List<Investimento>> call = api.getInvestimentos();
+        Call<List<Investimento>> call = api.getInvestimentos(ServiceGenerator.CONTA);
 
         call.enqueue(new Callback<List<Investimento>>() {
             @Override
             public void onResponse(Call<List<Investimento>> call, Response<List<Investimento>> response) {
                 if (response.body() != null) {
-                    ServiceGenerator.INVESTIMENTO = (Investimento) response.body();
-                    totalInvestido.setText("R$ " + String.valueOf(ServiceGenerator.INVESTIMENTO.getValor()));
-                    Toast.makeText(ViewInvestimentos.this,
-                            "ao",
-                            Toast.LENGTH_LONG
-                    ).show();
+                    mList = response.body();
+
+                    for (Investimento item: mList) {
+                        totalInv += item.getValor();
+                    }
+
+                    totalInvestido.setText("R$ " + String.valueOf(totalInv));
                 }
             }
 

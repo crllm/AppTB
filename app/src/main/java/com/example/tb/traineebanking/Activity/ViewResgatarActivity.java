@@ -60,7 +60,7 @@ public class ViewResgatarActivity extends AppCompatActivity implements AdapterPo
                 .build();
 
         API api = retrofit.create(API.class);
-        Call<List<Investimento>> call = api.getInvestimentos();
+        Call<List<Investimento>> call = api.getInvestimentos(ServiceGenerator.CONTA);
 
         call.enqueue(new Callback<List<Investimento>>() {
             @Override
@@ -74,7 +74,7 @@ public class ViewResgatarActivity extends AppCompatActivity implements AdapterPo
 
                 } else {
                     Toast.makeText(ViewResgatarActivity.this,
-                            "GLORIA",
+                            "erou",
                             Toast.LENGTH_LONG
                     ).show();
 

@@ -7,7 +7,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.tb.traineebanking.API.API;
 import com.example.tb.traineebanking.Adapters.ExtratoAdapter;
@@ -16,9 +18,13 @@ import com.example.tb.traineebanking.Models.Emprestimo;
 import com.example.tb.traineebanking.Models.Extrato;
 import com.example.tb.traineebanking.Models.Investimento;
 import com.example.tb.traineebanking.R;
+import com.example.tb.traineebanking.Utils.JsonUtils;
+import com.example.tb.traineebanking.Utils.ServiceGenerator;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -41,10 +47,10 @@ public class ViewExtratoActivity extends AppCompatActivity {
 
 
     private List<Extrato> mList = new ArrayList<>();
-    private Context mContext;
     private RecyclerView mRecycler;
     private ExtratoAdapter mAdapter;
 
+    private RadioGroup rgFiltro;
     private RadioButton rb7Dias;
     private RadioButton rb15Dias;
     private RadioButton rb30Dias;
@@ -60,6 +66,7 @@ public class ViewExtratoActivity extends AppCompatActivity {
 
         mRecycler = findViewById(R.id.rvExtrato);
 
+        rgFiltro = findViewById(R.id.rgFiltro);
         rb7Dias = findViewById(R.id.rb7Dias);
         rb15Dias = findViewById(R.id.rb15Dias);
         rb30Dias = findViewById(R.id.rb30Dias);
@@ -75,10 +82,9 @@ public class ViewExtratoActivity extends AppCompatActivity {
         mRecycler.setLayoutManager(manager);
         mRecycler.setHasFixedSize(true);
 
-        mAdapter = new ExtratoAdapter(ViewExtratoActivity.this, mList);
-        mRecycler.setAdapter(mAdapter);
+        loadData();
 
-        lblTudo.setOnClickListener(new View.OnClickListener() {
+        /*lblTudo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 entrada = true;
@@ -106,65 +112,127 @@ public class ViewExtratoActivity extends AppCompatActivity {
 
                 loadData();
             }
-        });
+        });*/
     }
 
     private void loadData() {
-
+        Gson gson = new GsonBuilder()
+                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
 
         Retrofit retrofit = new Retrofit
                 .Builder()
                 .baseUrl("http://10.0.2.2:49283")
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
         API api = retrofit.create(API.class);
 
-        if(entrada) {
-            Call<List<Emprestimo>> call = api.getEmprestimos();
+        Call<List<Extrato>> call = api.getExtrato(ServiceGenerator.CONTA);
+        call.enqueue(new Callback<List<Extrato>>() {
+            @Override
+            public void onResponse(Call<List<Extrato>> call, Response<List<Extrato>> response) {
+                if (response.isSuccessful()) {
+
+                    mList = response.body();
+
+                    mAdapter = new ExtratoAdapter(ViewExtratoActivity.this, mList);
+                    mRecycler.setAdapter(mAdapter);
+
+                } else {
+                    Toast.makeText(
+                            ViewExtratoActivity.this,
+                            "Retornou vazio o extrato",
+                            Toast.LENGTH_LONG
+                    ).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Extrato>> call, Throwable t) {
+                Toast.makeText(
+                        ViewExtratoActivity.this,
+                        "Deu ruim no extrato: " + t.getMessage(),
+                        Toast.LENGTH_LONG
+                ).show();
+            }
+        });
+
+
+        /*if(entrada) {
+            Call<List<Emprestimo>> call = api.getEmprestimos(ServiceGenerator.CONTA);
             call.enqueue(new Callback<List<Emprestimo>>() {
                 @Override
                 public void onResponse(Call<List<Emprestimo>> call, Response<List<Emprestimo>> response) {
                     if(response.isSuccessful()) {
                         listEmp = response.body();
+                    } else {
+                        Toast.makeText(
+                                ViewExtratoActivity.this,
+                                "Retornou vazio o emprestimo",
+                                Toast.LENGTH_LONG
+                        ).show();
                     }
                 }
 
                 @Override
                 public void onFailure(Call<List<Emprestimo>> call, Throwable t) {
-
+                    Toast.makeText(
+                            ViewExtratoActivity.this,
+                            "Deu ruim no emprestimo: " + t.getMessage(),
+                            Toast.LENGTH_LONG
+                    ).show();
                 }
             });
         }
 
         if(saida) {
-            Call<List<Investimento>> call = api.getInvestimentos();
+            Call<List<Investimento>> call = api.getInvestimentos(ServiceGenerator.CONTA);
             call.enqueue(new Callback<List<Investimento>>() {
                 @Override
                 public void onResponse(Call<List<Investimento>> call, Response<List<Investimento>> response) {
                     if(response.isSuccessful()) {
                         listInv = response.body();
+                    } else {
+                        Toast.makeText(
+                                ViewExtratoActivity.this,
+                                "Retornou vazio o investimento",
+                                Toast.LENGTH_LONG
+                        ).show();
                     }
                 }
 
                 @Override
                 public void onFailure(Call<List<Investimento>> call, Throwable t) {
-
+                    Toast.makeText(
+                            ViewExtratoActivity.this,
+                            "Deu ruim no investimento: " + t.getMessage(),
+                            Toast.LENGTH_LONG
+                    ).show();
                 }
             });
 
-            Call<List<Boleto>> callB = api.getBoletos();
+            Call<List<Boleto>> callB = api.getBoletos(ServiceGenerator.CONTA);
             callB.enqueue(new Callback<List<Boleto>>() {
                 @Override
                 public void onResponse(Call<List<Boleto>> call, Response<List<Boleto>> response) {
                     if(response.isSuccessful()) {
                         listBol = response.body();
+                    } else {
+                        Toast.makeText(
+                                ViewExtratoActivity.this,
+                                "Retornou vazio o boleto",
+                                Toast.LENGTH_LONG
+                        ).show();
                     }
                 }
 
                 @Override
                 public void onFailure(Call<List<Boleto>> call, Throwable t) {
-
+                    Toast.makeText(
+                            ViewExtratoActivity.this,
+                            "Deu ruim no boleto: " + t.getMessage(),
+                            Toast.LENGTH_LONG
+                    ).show();
                 }
             });
         }
@@ -197,6 +265,9 @@ public class ViewExtratoActivity extends AppCompatActivity {
         }
 
         ordenarExtrato(mList);
+
+        mAdapter = new ExtratoAdapter(ViewExtratoActivity.this, mList);
+        mRecycler.setAdapter(mAdapter);
     }
 
     private static void ordenarExtrato(List<Extrato> listExt) {
@@ -206,5 +277,6 @@ public class ViewExtratoActivity extends AppCompatActivity {
                 return extrato1.getData().compareTo(extrato2.getData());
             }
         });
+    }*/
     }
 }
