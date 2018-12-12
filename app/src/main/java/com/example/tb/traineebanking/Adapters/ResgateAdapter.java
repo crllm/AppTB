@@ -57,8 +57,8 @@ public class ResgateAdapter extends RecyclerView.Adapter<ResgateAdapter.viewHold
         Investimento investimento = mList.get(i);
 
         viewHolder.txtInvestimento.setText(investimento.tipo);
-        viewHolder.txtValor.setText(Double.toString((investimento.getValor())));
-        viewHolder.txtJuros.setText(Double.toString((investimento.getJuros())));
+        viewHolder.txtValor.setText("R$" + Double.toString((investimento.getValor())));
+        viewHolder.txtJuros.setText(Double.toString((investimento.getJuros())) + "%");
         viewHolder.txtDataAplicacao.setText(investimento.dataInvestimento.toString());
         viewHolder.txtDataVencimento.setText(investimento.dataTermino.toString());
     }
