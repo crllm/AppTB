@@ -74,7 +74,7 @@ public class ViewResgatarActivity extends AppCompatActivity implements AdapterPo
 
                 } else {
                     Toast.makeText(ViewResgatarActivity.this,
-                            "GLORIA",
+                            "erou",
                             Toast.LENGTH_LONG
                     ).show();
 

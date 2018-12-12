@@ -17,7 +17,7 @@ public class Investimento implements Serializable {
     public int idInvestimento;
 
     @SerializedName("Valor")
-    public Double valor;
+    public double valor;
 
     @SerializedName("DataInvestimento")
     public Date dataInvestimento;

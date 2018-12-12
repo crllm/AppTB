@@ -3,11 +3,15 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+
+
     <color name="fundoBrancoMenu">#A5FFFFFF</color>
     <color name="black">#000000</color>
     <color name="azulendereco">#A50B3E80</color>
     <color name="white">#FFFFFF</color>
     <color name="azul">#007bff</color>
     <color name="vermelho">#DC3545</color>
+    <color name="grey">#6E6E6E</color>
 
 </resources>
