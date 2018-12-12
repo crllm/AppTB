@@ -44,29 +44,23 @@ public class ResgateAdapter extends RecyclerView.Adapter<ResgateAdapter.viewHold
 
     @NonNull
     @Override
-    public ResgateAdapter.viewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public viewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         LayoutInflater inflater = LayoutInflater.from(mContext);
         View holder = inflater.inflate(R.layout.item_resgate, viewGroup, false);
-        ResgateAdapter.viewHolder viewHolder = new ResgateAdapter.viewHolder(holder);
+        viewHolder ViewHolder = new viewHolder(holder);
 
-        return viewHolder;
+        return ViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ResgateAdapter.viewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull viewHolder viewHolder, int i) {
         Investimento investimento = mList.get(i);
-        DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-
-        String valor = Double.toString(investimento.valor);
-        String juros = Double.toString(investimento.juros);
-        String dataInvestimento = df.format(investimento.dataInvestimento);
-        String dataTermino = df.format(investimento.dataTermino);
 
         viewHolder.txtInvestimento.setText(investimento.tipo);
-        viewHolder.txtValor.setText(valor);
-        viewHolder.txtJuros.setText(juros);
-        viewHolder.txtDataAplicacao.setText(dataInvestimento);
-        viewHolder.txtDataVencimento.setText(dataTermino);
+        viewHolder.txtValor.setText(Double.toString((investimento.getValor())));
+        viewHolder.txtJuros.setText(Double.toString((investimento.getJuros())));
+        viewHolder.txtDataAplicacao.setText(investimento.dataInvestimento.toString());
+        viewHolder.txtDataVencimento.setText(investimento.dataTermino.toString());
     }
 
     @Override
@@ -84,11 +78,13 @@ public class ResgateAdapter extends RecyclerView.Adapter<ResgateAdapter.viewHold
         public viewHolder(View itemView) {
             super(itemView);
 
-            txtInvestimento = itemView.findViewById(R.id.txtInvestimento);
-            txtValor = itemView.findViewById(R.id.txtValor);
-            txtJuros = itemView.findViewById(R.id.txtJuros);
-            txtDataAplicacao = itemView.findViewById(R.id.txtDataAplicacao);
-            txtDataVencimento = itemView.findViewById(R.id.txtDataVencimento);
+            txtInvestimento = itemView.findViewById(R.id.lblInvestimento);
+            txtValor = itemView.findViewById(R.id.lblValor);
+            txtJuros = itemView.findViewById(R.id.lblJuros);
+            txtDataAplicacao = itemView.findViewById(R.id.lblDataAplicacao);
+            txtDataVencimento = itemView.findViewById(R.id.lblDataVencimento);
+
+            itemView.setOnClickListener(this);
         }
 
         @Override
