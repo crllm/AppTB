@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -64,9 +65,9 @@ public class ViewPagamento extends AppCompatActivity implements View.OnClickList
         findViewById(R.id.btnPagar).setOnClickListener(this);
         findViewById(R.id.btnCancelar).setOnClickListener(this);
         findViewById(R.id.btnExibirSaldo).setOnClickListener(this);
+        findViewById(R.id.btnEsconderSaldo).setOnClickListener(this);
 
         lblSaldo.setText(String.format(("R$ ") + "%.2f", ServiceGenerator.CONTA.saldo));
-
 
     }
 
@@ -94,6 +95,10 @@ public class ViewPagamento extends AppCompatActivity implements View.OnClickList
                 break;
 
             case R.id.btnExibirSaldo:
+                exibirSaldo();
+                break;
+
+            case R.id.btnEsconderSaldo:
                 exibirSaldo();
                 break;
         }
@@ -285,11 +290,15 @@ public class ViewPagamento extends AppCompatActivity implements View.OnClickList
     public void exibirSaldo() {
         if (lblSaldo.getVisibility() == View.VISIBLE) {
             lblSaldo.setVisibility(View.INVISIBLE);
+            findViewById(R.id.btnExibirSaldo).setVisibility(View.VISIBLE);
+            findViewById(R.id.btnEsconderSaldo).setVisibility(View.INVISIBLE);
         } else {
             lblSaldo.setVisibility(View.VISIBLE);
+            findViewById(R.id.btnExibirSaldo).setVisibility(View.INVISIBLE);
+            findViewById(R.id.btnEsconderSaldo).setVisibility(View.VISIBLE);
         }
-
     }
+
 
     /*private void userSignup() {
             editNome.setError("Preencher o campo nome");

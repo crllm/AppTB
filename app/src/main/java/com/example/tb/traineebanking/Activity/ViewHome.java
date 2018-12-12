@@ -101,8 +101,8 @@ public class ViewHome extends AppCompatActivity {
 
         Nome.setText(("Olá, ") + (splited[0]) + (" ") + (splited[splited.length - 1]));
         Valor.setText(String.valueOf("R$ *****"));
-        Endereco.setText((ServiceGenerator.CONTA.agencia.endereco.rua) + (" ,") + (ServiceGenerator.CONTA.agencia.endereco.numero));
-        Cidade.setText((ServiceGenerator.CONTA.agencia.endereco.cidade) + (" ,") + (ServiceGenerator.CONTA.agencia.endereco.estado));
+        Endereco.setText((ServiceGenerator.CONTA.agencia.endereco.rua) + (", ") + (ServiceGenerator.CONTA.agencia.endereco.numero));
+        Cidade.setText((ServiceGenerator.CONTA.agencia.endereco.cidade) + (", ") + (ServiceGenerator.CONTA.agencia.endereco.estado));
 
         AlterarDados.setOnClickListener(vAlterarCadastro);
         Pagamentos.setOnClickListener(vPagamento);
