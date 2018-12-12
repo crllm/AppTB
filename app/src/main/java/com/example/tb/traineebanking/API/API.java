@@ -15,6 +15,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface API {
 
@@ -29,5 +30,8 @@ public interface API {
 
     @GET("/boletos")
     Call<List<Boleto>> getBoletos();
+
+    @GET("/api/Boleto/{id}")
+    Call<Boleto> getBoleto(@Path("id") int id);
 
 }

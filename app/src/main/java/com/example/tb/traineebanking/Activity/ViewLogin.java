@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.tb.traineebanking.API.API;
+import com.example.tb.traineebanking.Models.Boleto;
 import com.example.tb.traineebanking.Models.Conta;
 import com.example.tb.traineebanking.Models.LogarConta;
 import com.example.tb.traineebanking.R;
