@@ -15,7 +15,9 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface API {
@@ -35,10 +37,10 @@ public interface API {
     @POST("api/boleto")
     Call<List<Boleto>> getBoletos(@Body Conta conta);
 
-    @GET("api/boleto//{id}")
-    Call<Boleto> getBoleto(@Path("id") int id);
-
     @GET("/api/Boleto/{id}")
     Call<Boleto> getBoleto(@Path("id") int id);
+
+    @PUT("/api/Boleto")
+    Call<Boleto> pagarBoleto(@Body Boleto boleto);
 
 }

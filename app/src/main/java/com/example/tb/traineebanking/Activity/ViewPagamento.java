@@ -7,6 +7,7 @@ import com.example.tb.traineebanking.Utils.ServiceGenerator;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import android.app.Service;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,9 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.time.LocalDateTime;
+import java.util.Date;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,7 +39,7 @@ public class ViewPagamento extends AppCompatActivity implements View.OnClickList
 
     private LinearLayout linearBotoes;
 
-    private Boleto boleto;
+    Boleto boleto = new Boleto();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,17 +65,23 @@ public class ViewPagamento extends AppCompatActivity implements View.OnClickList
         findViewById(R.id.btnExibirSaldo).setOnClickListener(this);
 
         lblSaldo.setText(String.format(("R$ ") + "%.2f", ServiceGenerator.CONTA.saldo));
+
+
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnPesquisar:
-                buscarBoleto();
+                if (isValidoPesquisa()) {
+                    buscarBoleto();
+                } else {
+                    return;
+                }
                 break;
 
             case R.id.btnPagar:
-                if (validarPagar()) {
+                if (isValidoPagar() && isSaldoValido()) {
                     pagarBoleto();
                 } else {
                     return;
@@ -89,7 +99,7 @@ public class ViewPagamento extends AppCompatActivity implements View.OnClickList
     }
 
 
-    private Boleto buscarBoleto() {
+    private void buscarBoleto() {
 
         int numBoleto = Integer.parseInt(txtCodigo.getText().toString());
 
@@ -103,15 +113,20 @@ public class ViewPagamento extends AppCompatActivity implements View.OnClickList
                 .build();
 
         API api = retrofit.create(API.class);
+
         Call<Boleto> call = api.getBoleto(numBoleto);
         call.enqueue(new Callback<Boleto>() {
             @Override
             public void onResponse(Call<Boleto> call, Response<Boleto> response) {
-                if (response.body() != null) {
+                if (response.isSuccessful() && response.body() != null) {
                     boleto = response.body();
-                    exibirBoleto();
+                    if (boleto.getStatus() == 1) {
+                        Toast.makeText(ViewPagamento.this, "O boleto já está pago", Toast.LENGTH_LONG).show();
+                    } else
+                        exibirBoleto();
+
                 } else {
-                    Toast.makeText(ViewPagamento.this, "Boleto não encontrado", Toast.LENGTH_LONG).show();
+                    Toast.makeText(ViewPagamento.this, "Não foi encontrado nenhum boleto", Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -120,16 +135,45 @@ public class ViewPagamento extends AppCompatActivity implements View.OnClickList
                 Toast.makeText(ViewPagamento.this, "Erro, tente mais tarde", Toast.LENGTH_LONG).show();
             }
         });
-
-        return boleto;
     }
 
 
     private void pagarBoleto() {
 
+        boleto.setDescricao(txtDescricao.getText().toString());
+
+        Gson gson = new GsonBuilder()
+                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
+
+        Retrofit retrofit = new Retrofit
+                .Builder()
+                .baseUrl("http://10.0.2.2:49283")
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+
+        API api = retrofit.create(API.class);
+
+        Call<Boleto> call = api.pagarBoleto(boleto);
+        call.enqueue(new Callback<Boleto>() {
+            @Override
+            public void onResponse(Call<Boleto> call, Response<Boleto> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    Toast.makeText(ViewPagamento.this, "Pagamento realizado com sucesso", Toast.LENGTH_LONG).show();
+                    esconderCampos();
+                    ServiceGenerator.CONTA.saldo -= boleto.getValor();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Boleto> call, Throwable t) {
+                Toast.makeText(ViewPagamento.this, "Houve um erro, tente mais tarde", Toast.LENGTH_LONG).show();
+            }
+        });
+
+
     }
 
-    private boolean validarPagar() {
+    private boolean isValidoPagar() {
         String descricao = txtDescricao.getText().toString().trim();
 
         boolean aux = true;
@@ -137,6 +181,34 @@ public class ViewPagamento extends AppCompatActivity implements View.OnClickList
         if (descricao.isEmpty()) {
             txtDescricao.setError("Preencher o campo descrição");
             txtDescricao.requestFocus();
+            aux = false;
+        }
+
+        return aux;
+    }
+
+    private boolean isValidoPesquisa() {
+        boolean aux = true;
+
+        String codBoleto = txtCodigo.getText().toString().trim();
+
+        if (codBoleto.isEmpty()) {
+            txtCodigo.setError("Informe o código do boleto");
+            txtCodigo.requestFocus();
+            aux = false;
+        }
+
+        return aux;
+    }
+
+    private boolean isSaldoValido() {
+        boolean aux = true;
+
+        Double saldo = ServiceGenerator.CONTA.saldo;
+        Double valorBoleto = boleto.getValor();
+
+        if (saldo < valorBoleto) {
+            Toast.makeText(ViewPagamento.this, "Saldo insuficiente", Toast.LENGTH_LONG).show();
             aux = false;
         }
 
@@ -152,7 +224,11 @@ public class ViewPagamento extends AppCompatActivity implements View.OnClickList
         lblDescricao.setVisibility(View.VISIBLE);
         linearBotoes.setVisibility(View.VISIBLE);
 
-        txtDataEmissao.setText(boleto.getDataBoleto().toString());
+        Date dataEmissao = boleto.getDataBoleto();
+        Double valorBoleto = boleto.getValor();
+
+        txtDataEmissao.setText(dataEmissao.toString());
+        txtValorBoleto.setText("R$ " + valorBoleto.toString());
 
     }
 
