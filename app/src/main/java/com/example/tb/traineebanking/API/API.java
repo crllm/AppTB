@@ -16,6 +16,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface API {
@@ -34,6 +35,9 @@ public interface API {
 
     @GET("api/investimento//{id}")
     Call<List<Investimento>> getInvestimentosId(@Path("id") int id);
+
+    @PUT("/api/investimento")
+    Call<Investimento> resgatarInvestimento(@Body Investimento investimento);
 
     @POST("api/boleto")
     Call<List<Boleto>> getBoletos(@Body Conta conta);
