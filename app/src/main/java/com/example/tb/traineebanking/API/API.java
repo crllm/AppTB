@@ -37,6 +37,12 @@ public interface API {
     @POST("api/investimento")
     Call<List<Investimento>> getInvestimentos(@Body Conta conta);
 
+    @GET("api/investimento//{id}")
+    Call<List<Investimento>> getInvestimentosId(@Path("id") int id);
+
+    @PUT("/api/investimento")
+    Call<Investimento> resgatarInvestimento(@Body Investimento investimento);
+
     @POST("api/boleto")
     Call<List<Boleto>> getBoletos(@Body Conta conta);
 
