@@ -36,4 +36,65 @@ public class Conta implements Serializable {
     public Date dataRegistroConta;
 
 
+
+    public Conta() {
+
+    }
+
+
+    public int getIdConta() {
+        return idConta;
+    }
+
+    public void setIdConta(int idConta) {
+        this.idConta = idConta;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public char getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(char tipo) {
+        this.tipo = tipo;
+    }
+
+    public Double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(Double saldo) {
+        this.saldo = saldo;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Agencia getAgencia() {
+        return agencia;
+    }
+
+    public void setAgencia(Agencia agencia) {
+        this.agencia = agencia;
+    }
+
+    public Date getDataRegistroConta() {
+        return dataRegistroConta;
+    }
+
+    public void setDataRegistroConta(Date dataRegistroConta) {
+        this.dataRegistroConta = dataRegistroConta;
+    }
 }

@@ -6,12 +6,14 @@ import com.example.tb.traineebanking.Models.Emprestimo;
 import com.example.tb.traineebanking.Models.Extrato;
 import com.example.tb.traineebanking.Models.Investimento;
 import com.example.tb.traineebanking.Models.LogarConta;
+import com.example.tb.traineebanking.Utils.ServiceGenerator;
 
 
 import java.util.HashMap;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.CallAdapter;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
@@ -45,5 +47,8 @@ public interface API {
 
     @PUT("/api/Boleto")
     Call<Boleto> pagarBoleto(@Body Boleto boleto);
+
+    @PUT("/api/Conta")
+    Call<Conta> alterarConta(@Body Conta conta);
 
 }

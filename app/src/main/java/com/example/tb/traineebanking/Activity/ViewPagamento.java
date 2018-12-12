@@ -2,6 +2,7 @@ package com.example.tb.traineebanking.Activity;
 
 import com.example.tb.traineebanking.API.API;
 import com.example.tb.traineebanking.Models.Boleto;
+import com.example.tb.traineebanking.Models.Conta;
 import com.example.tb.traineebanking.R;
 import com.example.tb.traineebanking.Utils.ServiceGenerator;
 import com.google.gson.Gson;
@@ -161,6 +162,7 @@ public class ViewPagamento extends AppCompatActivity implements View.OnClickList
                     Toast.makeText(ViewPagamento.this, "Pagamento realizado com sucesso", Toast.LENGTH_LONG).show();
                     esconderCampos();
                     ServiceGenerator.CONTA.saldo -= boleto.getValor();
+                    alterarConta();
                 }
             }
 
@@ -169,8 +171,35 @@ public class ViewPagamento extends AppCompatActivity implements View.OnClickList
                 Toast.makeText(ViewPagamento.this, "Houve um erro, tente mais tarde", Toast.LENGTH_LONG).show();
             }
         });
+    }
 
+    public void alterarConta(){
 
+        Gson gson = new GsonBuilder()
+                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
+
+        Retrofit retrofit = new Retrofit
+                .Builder()
+                .baseUrl("http://10.0.2.2:49283")
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+
+        API api = retrofit.create(API.class);
+
+        Call<Conta> call = api.alterarConta(ServiceGenerator.CONTA);
+        call.enqueue(new Callback<Conta>() {
+            @Override
+            public void onResponse(Call<Conta> call, Response<Conta> response) {
+                if(response.isSuccessful() && response.body() != null){
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Conta> call, Throwable t) {
+
+            }
+        });
     }
 
     private boolean isValidoPagar() {
