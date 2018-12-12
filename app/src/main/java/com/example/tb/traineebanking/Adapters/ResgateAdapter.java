@@ -14,6 +14,7 @@ import com.example.tb.traineebanking.R;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -87,7 +88,7 @@ public class ResgateAdapter extends RecyclerView.Adapter<ResgateAdapter.viewHold
             txtValor = itemView.findViewById(R.id.txtValor);
             txtJuros = itemView.findViewById(R.id.txtJuros);
             txtDataAplicacao = itemView.findViewById(R.id.txtDataAplicacao);
-            txtDataVencimento = itemView.findViewById(R.id.txtDataEmissao);
+            txtDataVencimento = itemView.findViewById(R.id.txtDataVencimento);
         }
 
         @Override

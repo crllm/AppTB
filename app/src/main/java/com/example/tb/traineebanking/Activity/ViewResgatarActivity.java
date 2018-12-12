@@ -28,7 +28,6 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ViewResgatarActivity extends AppCompatActivity implements AdapterPositionOnClickListener {
-    private TableLayout mTable;
     private RecyclerView mRecycler;
     private ResgateAdapter mAdapter;
     private List<Investimento> mList;
@@ -45,11 +44,11 @@ public class ViewResgatarActivity extends AppCompatActivity implements AdapterPo
         mRecycler.setLayoutManager(manager);
         mRecycler.setHasFixedSize(true);
 
-        getInvestimentos();
+        getInvestimentosId();
 
     }
 
-    public void getInvestimentos() {
+    public void getInvestimentosId() {
         Gson gson = new GsonBuilder()
                 .setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
 
@@ -60,7 +59,7 @@ public class ViewResgatarActivity extends AppCompatActivity implements AdapterPo
                 .build();
 
         API api = retrofit.create(API.class);
-        Call<List<Investimento>> call = api.getInvestimentos(ServiceGenerator.CONTA);
+        Call<List<Investimento>> call = api.getInvestimentosId(ServiceGenerator.CONTA.idConta);
 
         call.enqueue(new Callback<List<Investimento>>() {
             @Override
