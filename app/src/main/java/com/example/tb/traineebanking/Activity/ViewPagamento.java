@@ -197,10 +197,16 @@ public class ViewPagamento extends AppCompatActivity implements View.OnClickList
             @Override
             public void onResponse(Call<Boleto> call, Response<Boleto> response) {
                 if (response.isSuccessful() && response.body() != null) {
+                    pbLoading.setVisibility(ProgressBar.INVISIBLE);
+
                     Toast.makeText(ViewPagamento.this, "Pagamento realizado com sucesso!", Toast.LENGTH_LONG).show();
                     esconderCampos();
                     ServiceGenerator.CONTA.saldo -= boleto.getValor();
                     alterarConta();
+                }
+                else {
+                    pbLoading.setVisibility(ProgressBar.INVISIBLE);
+                    Toast.makeText(ViewPagamento.this, "Não foi possível realizar o pagamento!", Toast.LENGTH_LONG).show();
                 }
             }
 
