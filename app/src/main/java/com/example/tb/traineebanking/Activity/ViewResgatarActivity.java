@@ -125,6 +125,25 @@ public class ViewResgatarActivity extends AppCompatActivity implements AdapterPo
         call.enqueue(new Callback<Investimento>() {
             @Override
             public void onResponse(Call<Investimento> call, Response<Investimento> response) {
+                if (response.isSuccessful()) {
+
+                    Toast.makeText(
+                            ViewResgatarActivity.this,
+                            "Resgate do investimento realizado com sucesso!",
+                            Toast.LENGTH_LONG
+                    ).show();
+
+                    Intent i = new Intent(ViewResgatarActivity.this, ViewInvestimentos.class);
+                    startActivity(i);
+                    finish();
+
+                } else {
+                    Toast.makeText(
+                            ViewResgatarActivity.this,
+                            "Retornou vazio",
+                            Toast.LENGTH_LONG
+                    ).show();
+                }
             }
 
             @Override
