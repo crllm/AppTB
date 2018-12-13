@@ -8,17 +8,15 @@ import com.example.tb.traineebanking.Utils.ServiceGenerator;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import android.app.Service;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 import retrofit2.Call;
@@ -71,6 +69,7 @@ public class ViewPagamento extends AppCompatActivity implements View.OnClickList
         findViewById(R.id.btnExibirSaldo).setOnClickListener(this);
         findViewById(R.id.btnEsconderSaldo).setOnClickListener(this);
         findViewById(R.id.btnPagarBoleto).setOnClickListener(this);
+        findViewById(R.id.btnBoletos).setOnClickListener(this);
 
         lblSaldo.setText(String.format(("R$ ") + "%.2f", ServiceGenerator.CONTA.saldo));
 
@@ -109,6 +108,11 @@ public class ViewPagamento extends AppCompatActivity implements View.OnClickList
 
             case R.id.btnPagarBoleto:
                 exibirTextCodigo();
+                break;
+
+            case R.id.btnBoletos:
+                Intent i = new Intent(ViewPagamento.this, ViewBoletos.class);
+                startActivity(i);
                 break;
         }
     }
@@ -317,30 +321,4 @@ public class ViewPagamento extends AppCompatActivity implements View.OnClickList
             findViewById(R.id.btnEsconderSaldo).setVisibility(View.VISIBLE);
         }
     }
-
-
-    /*private void userSignup() {
-            editNome.setError("Preencher o campo nome");
-            editNome.requestFocus();
-            return;
-        } else if (email.isEmpty()) {
-            editEmail.setError("Preencher o campo email");
-            editEmail.requestFocus();
-            return;
-        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            editEmail.setError("Email inválido");
-            editEmail.requestFocus();
-            return;
-        } else if (senha.isEmpty()) {
-            editSenha.setError("Preencher o campo senha");
-            editSenha.requestFocus();
-            return;
-        } else if (senha.length() < 6) {
-            editSenha.setError("Informar uma senha com pelo menos 6 caracteres");
-            editSenha.requestFocus();
-            return;
-        } else {
-            cadastrar();
-        }
-    }*/
 }
