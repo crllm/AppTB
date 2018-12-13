@@ -48,9 +48,9 @@ public class BoletosAdapter extends RecyclerView.Adapter<BoletosAdapter.viewHold
         Boleto boleto = mList.get(i);
 
         viewHolder.lblTipoBoleto.setText(boleto.getEmprestimo().getTipo());
-        viewHolder.lblValorParcela.setText(Double.toString(boleto.getValor()));
-        viewHolder.lblParcela.setText(boleto.getNumero());
-        viewHolder.lblStatusBoleto.setText(boleto.getStatus());
+        viewHolder.lblValorParcela.setText("Valor: R$ " + Double.toString(boleto.getValor()));
+        viewHolder.lblParcela.setText("Nº da Parcela: " + String.valueOf(boleto.getNumero()));
+        viewHolder.lblStatusBoleto.setText("Status: " + String.valueOf(boleto.getStatus()));
     }
 
     @Override
@@ -78,7 +78,7 @@ public class BoletosAdapter extends RecyclerView.Adapter<BoletosAdapter.viewHold
 
         @Override
         public void onClick(View v) {
-            if(adapterPositionOnClickListener != null) {
+            if (adapterPositionOnClickListener != null) {
                 adapterPositionOnClickListener.setAdapterPositionOnClickListener(v, getPosition());
             }
         }
