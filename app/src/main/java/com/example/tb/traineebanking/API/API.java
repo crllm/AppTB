@@ -4,6 +4,7 @@ import com.example.tb.traineebanking.Models.Boleto;
 import com.example.tb.traineebanking.Models.Conta;
 import com.example.tb.traineebanking.Models.Emprestimo;
 import com.example.tb.traineebanking.Models.Extrato;
+import com.example.tb.traineebanking.Models.Financiamento;
 import com.example.tb.traineebanking.Models.Investimento;
 import com.example.tb.traineebanking.Models.LogarConta;
 
@@ -28,7 +29,7 @@ public interface API {
     Call<List<Extrato>> getExtrato(@Body Conta conta);
 
     @POST("api/emprestimo")
-    Call<List<Emprestimo>> getEmprestimos(@Body Conta conta);
+    Call<Emprestimo> gerarEmprestimo(@Body Financiamento financiamento);
 
     @POST("api/investimento")
     Call<List<Investimento>> getInvestimentos(@Body Conta conta);

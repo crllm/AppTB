@@ -29,6 +29,7 @@
             android:orientation="vertical"
             android:padding="20dp">
             <TextView
+                android:id="@+id/lblFinanciamento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Financiamento"
@@ -47,10 +48,12 @@
                 android:textSize="18sp" />
 
             <EditText
+                android:id="@+id/txtValor"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_gravity="right"
                 android:layout_marginTop="5dp"
+                android:padding="10dp"
                 android:background="@drawable/textbox_border"
                 android:textSize="16sp"/>
 
@@ -62,23 +65,54 @@
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
-            <RadioGroup
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Em 6x"
-                    android:textSize="18sp"/>
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-                <RadioButton
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <RadioButton
+                        android:id="@+id/rb6x"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Em 6x"
+                        android:textSize="18sp"
+                        android:checked="true"/>
+
+                    <RadioButton
+                        android:id="@+id/rb12x"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Em 12x"
+                        android:textSize="18sp"/>
+                </RadioGroup>
+
+                <RadioGroup
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Em 12x"
-                    android:textSize="18sp"/>
-            </RadioGroup>
+                    android:layout_marginLeft="20dp">
+                    <RadioButton
+                        android:id="@+id/rbBoleto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Boleto Mensal"
+                        android:textSize="18sp"
+                        android:checked="true"/>
+
+                    <RadioButton
+                        android:id="@+id/rbDebito"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Débito Automático"
+                        android:textSize="18sp"/>
+                </RadioGroup>
+
+            </LinearLayout>
 
             <Button
+                android:id="@+id/btnSolicitarEmprestimo"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="30dp"

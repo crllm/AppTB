@@ -17,9 +17,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by rafa_ on 04/12/2018.
- */
 
 public class ResgateAdapter extends RecyclerView.Adapter<ResgateAdapter.viewHolder> {
     private Context mContext;
