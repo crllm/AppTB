@@ -17,5 +17,5 @@
         pois não é necessário resgatar as suas aplicações! Mas atenção, ao contratar, confira os encargos.
         Eles podem ser superiores ao rendimento dos seus investimentos.</string>
 
-    <string name="ip">http://10.0.2.2:49283</string>
+    <string name="ip">http://192.168.0.20:49283</string>
 </resources>

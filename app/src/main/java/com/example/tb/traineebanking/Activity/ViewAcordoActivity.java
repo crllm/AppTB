@@ -84,7 +84,7 @@ public class ViewAcordoActivity extends AppCompatActivity implements AdapterPosi
     private void loadData() {
         Retrofit retrofit = new Retrofit
                 .Builder()
-                .baseUrl("http://10.0.2.2:49283")
+                .baseUrl(getString(R.string.ip))
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
