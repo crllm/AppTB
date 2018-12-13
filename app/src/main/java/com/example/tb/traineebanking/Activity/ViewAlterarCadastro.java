@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.tb.traineebanking.API.API;
@@ -35,8 +37,7 @@ public class ViewAlterarCadastro extends AppCompatActivity {
     private EditText txtCidade;
     private EditText txtEstado;
     private Button btnAlterar;
-
-
+    private RelativeLayout pbLoading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,12 +57,14 @@ public class ViewAlterarCadastro extends AppCompatActivity {
         txtEstado = findViewById(R.id.txtEstado);
 
         btnAlterar = findViewById(R.id.btnAlterar);
+        pbLoading = findViewById(R.id.pbLoading);
 
         popularCampos();
 
         btnAlterar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pbLoading.setVisibility(ProgressBar.VISIBLE);
                 verificarAcesso();
             }
         });
@@ -169,6 +172,7 @@ public class ViewAlterarCadastro extends AppCompatActivity {
                     finish();
 
                 } else {
+                    pbLoading.setVisibility(ProgressBar.INVISIBLE);
                     Toast.makeText(
                             ViewAlterarCadastro.this,
                             "Não foi possível alterar os dados",
@@ -179,6 +183,7 @@ public class ViewAlterarCadastro extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Conta> call, Throwable t) {
+                pbLoading.setVisibility(ProgressBar.INVISIBLE);
                 Toast.makeText(
                         ViewAlterarCadastro.this,
                         "Erro, tente acessar mais tarde" + t.getMessage(),

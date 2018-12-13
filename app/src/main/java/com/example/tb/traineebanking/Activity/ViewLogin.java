@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.tb.traineebanking.API.API;
@@ -33,7 +35,7 @@ public class ViewLogin extends AppCompatActivity {
     private EditText conta;
     private EditText senha;
     private Button btnLogar;
-
+    private RelativeLayout pbLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +46,13 @@ public class ViewLogin extends AppCompatActivity {
         conta = findViewById(R.id.idConta);
         senha = findViewById(R.id.idSenha);
         btnLogar = findViewById(R.id.idbtnLogar);
+        pbLogin = findViewById(R.id.pbLogin);
 
         btnLogar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pbLogin.setVisibility(ProgressBar.VISIBLE);
+
                 verificarAcesso();
             }
         });
@@ -95,6 +100,7 @@ public class ViewLogin extends AppCompatActivity {
                     finish();
 
                 } else {
+                    pbLogin.setVisibility(ProgressBar.INVISIBLE);
                     Toast.makeText(
                             ViewLogin.this,
                             "Dados estão incorretos",
@@ -105,9 +111,10 @@ public class ViewLogin extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Conta> call, Throwable t) {
+                pbLogin.setVisibility(ProgressBar.INVISIBLE);
                 Toast.makeText(
                         ViewLogin.this,
-                        "Erro, tente acessar mais tarde" + t.getMessage(),
+                        "Erro, tente acessar mais tarde",
                         Toast.LENGTH_LONG
                 ).show();
             }

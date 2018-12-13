@@ -14,6 +14,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +43,8 @@ public class ViewPagamento extends AppCompatActivity implements View.OnClickList
     private LinearLayout linearBotoes;
     private LinearLayout linearCodigoBoleto;
 
+    private RelativeLayout pbLoading;
+
     Boleto boleto = new Boleto();
 
     @Override
@@ -62,6 +66,8 @@ public class ViewPagamento extends AppCompatActivity implements View.OnClickList
         lblSaldo = findViewById(R.id.lblSaldo);
         lblCodigoBoleto = findViewById(R.id.lblCodigoBoleto);
 
+        pbLoading = findViewById(R.id.pbLoading);
+
         findViewById(R.id.btnPagar).setOnClickListener(this);
         findViewById(R.id.btnPesquisar).setOnClickListener(this);
         findViewById(R.id.btnPagar).setOnClickListener(this);
@@ -80,6 +86,7 @@ public class ViewPagamento extends AppCompatActivity implements View.OnClickList
         switch (v.getId()) {
             case R.id.btnPesquisar:
                 if (isValidoPesquisa()) {
+                    pbLoading.setVisibility(ProgressBar.VISIBLE);
                     buscarBoleto();
                 } else {
                     return;
@@ -88,6 +95,7 @@ public class ViewPagamento extends AppCompatActivity implements View.OnClickList
 
             case R.id.btnPagar:
                 if (isValidoPagar() && isSaldoValido()) {
+                    pbLoading.setVisibility(ProgressBar.VISIBLE);
                     pagarBoleto();
                 } else {
                     return;
@@ -150,18 +158,20 @@ public class ViewPagamento extends AppCompatActivity implements View.OnClickList
                 if (response.isSuccessful() && response.body() != null) {
                     boleto = response.body();
                     if (boleto.getStatus() == 1) {
-                        Toast.makeText(ViewPagamento.this, "O boleto já está pago", Toast.LENGTH_LONG).show();
+                        Toast.makeText(ViewPagamento.this, "O boleto já está pago!", Toast.LENGTH_LONG).show();
                     } else
                         exibirBoleto();
 
                 } else {
-                    Toast.makeText(ViewPagamento.this, "Não foi encontrado nenhum boleto", Toast.LENGTH_LONG).show();
+                    pbLoading.setVisibility(ProgressBar.INVISIBLE);
+                    Toast.makeText(ViewPagamento.this, "Não foi encontrado nenhum boleto!", Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<Boleto> call, Throwable t) {
-                Toast.makeText(ViewPagamento.this, "Erro, tente mais tarde", Toast.LENGTH_LONG).show();
+                pbLoading.setVisibility(ProgressBar.INVISIBLE);
+                Toast.makeText(ViewPagamento.this, "Erro, tente mais tarde!", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -187,7 +197,7 @@ public class ViewPagamento extends AppCompatActivity implements View.OnClickList
             @Override
             public void onResponse(Call<Boleto> call, Response<Boleto> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    Toast.makeText(ViewPagamento.this, "Pagamento realizado com sucesso", Toast.LENGTH_LONG).show();
+                    Toast.makeText(ViewPagamento.this, "Pagamento realizado com sucesso!", Toast.LENGTH_LONG).show();
                     esconderCampos();
                     ServiceGenerator.CONTA.saldo -= boleto.getValor();
                     alterarConta();
@@ -196,7 +206,8 @@ public class ViewPagamento extends AppCompatActivity implements View.OnClickList
 
             @Override
             public void onFailure(Call<Boleto> call, Throwable t) {
-                Toast.makeText(ViewPagamento.this, "Houve um erro, tente mais tarde", Toast.LENGTH_LONG).show();
+                pbLoading.setVisibility(ProgressBar.INVISIBLE);
+                Toast.makeText(ViewPagamento.this, "Houve um erro, tente mais tarde!", Toast.LENGTH_LONG).show();
             }
         });
     }

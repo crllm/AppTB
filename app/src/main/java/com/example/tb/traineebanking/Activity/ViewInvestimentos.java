@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -190,7 +191,7 @@ public class ViewInvestimentos extends AppCompatActivity {
             @Override
             public void onFailure(Call<List<Investimento>> call, Throwable t) {
                 Toast.makeText(ViewInvestimentos.this,
-                        "Não vai dar não",
+                        "Erro, tente acessar mais tarde!",
                         Toast.LENGTH_LONG
                 ).show();
             }

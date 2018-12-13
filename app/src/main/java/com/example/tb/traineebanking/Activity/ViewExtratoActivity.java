@@ -83,7 +83,7 @@ public class ViewExtratoActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(
                             ViewExtratoActivity.this,
-                            "Retornou vazio o extrato",
+                            "Extrato vazio!",
                             Toast.LENGTH_LONG
                     ).show();
                 }
@@ -93,7 +93,7 @@ public class ViewExtratoActivity extends AppCompatActivity {
             public void onFailure(Call<List<Extrato>> call, Throwable t) {
                 Toast.makeText(
                         ViewExtratoActivity.this,
-                        "Deu ruim no extrato: " + t.getMessage(),
+                        "Erro, tente acessar mais tarde!",
                         Toast.LENGTH_LONG
                 ).show();
             }

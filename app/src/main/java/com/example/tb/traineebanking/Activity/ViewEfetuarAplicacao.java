@@ -8,7 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.tb.traineebanking.API.API;
@@ -31,7 +33,7 @@ public class ViewEfetuarAplicacao extends AppCompatActivity {
     private RadioButton rdbPoupanca;
     private RadioButton rdbPreFixado;
     private Button btnInvestir;
-
+    private RelativeLayout pbLoading;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,10 +44,13 @@ public class ViewEfetuarAplicacao extends AppCompatActivity {
         rdbPoupanca = findViewById(R.id.rdbPoupanca);
         rdbPreFixado = findViewById(R.id.rdbPreFixado);
         btnInvestir = findViewById(R.id.btnInvestir);
+        pbLoading = findViewById(R.id.pbLoading);
 
         btnInvestir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pbLoading.setVisibility(ProgressBar.VISIBLE);
+
                 gerarInvestimento();
             }
         });
@@ -94,6 +99,7 @@ public class ViewEfetuarAplicacao extends AppCompatActivity {
                     finish();
 
                 } else {
+                    pbLoading.setVisibility(ProgressBar.INVISIBLE);
                     Toast.makeText(
                             ViewEfetuarAplicacao.this,
                             "Não foi possível realizar o investimento!",
@@ -104,9 +110,10 @@ public class ViewEfetuarAplicacao extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Conta> call, Throwable t) {
+                pbLoading.setVisibility(ProgressBar.INVISIBLE);
                 Toast.makeText(
                         ViewEfetuarAplicacao.this,
-                        "Erro, tente acessar mais tarde" + t.getMessage(),
+                        "Erro, tente acessar mais tarde!",
                         Toast.LENGTH_LONG
                 ).show();
             }
