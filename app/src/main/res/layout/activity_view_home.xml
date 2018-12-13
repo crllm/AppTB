@@ -46,7 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:gravity="center"
+                android:gravity="center_horizontal"
                 android:orientation="horizontal"
                 android:weightSum="3">
 
@@ -125,12 +125,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="20dp"
-                android:gravity="center"
+                android:gravity="center_horizontal"
                 android:orientation="horizontal"
                 android:weightSum="3">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
@@ -145,8 +145,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Investimentos"
                         android:fontFamily="sans-serif-thin"
+                        android:text="Investimentos"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         android:textStyle="bold" />
