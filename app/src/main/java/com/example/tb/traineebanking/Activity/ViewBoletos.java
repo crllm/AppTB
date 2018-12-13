@@ -60,7 +60,7 @@ public class ViewBoletos extends AppCompatActivity {
                 .build();
 
         API api = retrofit.create(API.class);
-        Call<List<Boleto>> call = api.getBoletos(ServiceGenerator.CONTA.idConta);
+        Call<List<Boleto>> call = api.getListBoletos(ServiceGenerator.CONTA.idConta);
         call.enqueue(new Callback<List<Boleto>>() {
             @Override
             public void onResponse(Call<List<Boleto>> call, Response<List<Boleto>> response) {

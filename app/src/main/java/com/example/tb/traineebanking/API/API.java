@@ -56,4 +56,7 @@ public interface API {
 
     @PUT("/api/conta/{id}")
     Call<Conta>  alterarDadosCadastrais(@Path("id") int id, @Body Conta conta);
+
+    @GET("/api/ListBoletos/{id}")
+    Call<List<Boleto>> getListBoletos(@Path("id") int id);
 }
