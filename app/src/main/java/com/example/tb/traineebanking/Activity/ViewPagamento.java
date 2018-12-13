@@ -38,8 +38,10 @@ public class ViewPagamento extends AppCompatActivity implements View.OnClickList
     private TextView lblValorBoleto;
     private TextView lblDescricao;
     private TextView lblSaldo;
+    private TextView lblCodigoBoleto;
 
     private LinearLayout linearBotoes;
+    private LinearLayout linearCodigoBoleto;
 
     Boleto boleto = new Boleto();
 
@@ -54,11 +56,13 @@ public class ViewPagamento extends AppCompatActivity implements View.OnClickList
         txtDescricao = findViewById(R.id.txtDescrição);
 
         linearBotoes = findViewById(R.id.linearBotoes);
+        linearCodigoBoleto = findViewById(R.id.linearCodigoBoleto);
 
         lblDataEmissao = findViewById(R.id.lblDataEmissao);
         lblValorBoleto = findViewById(R.id.lblValorBoleto);
         lblDescricao = findViewById(R.id.lblDescricao);
         lblSaldo = findViewById(R.id.lblSaldo);
+        lblCodigoBoleto = findViewById(R.id.lblCodigoBoleto);
 
         findViewById(R.id.btnPagar).setOnClickListener(this);
         findViewById(R.id.btnPesquisar).setOnClickListener(this);
@@ -66,6 +70,7 @@ public class ViewPagamento extends AppCompatActivity implements View.OnClickList
         findViewById(R.id.btnCancelar).setOnClickListener(this);
         findViewById(R.id.btnExibirSaldo).setOnClickListener(this);
         findViewById(R.id.btnEsconderSaldo).setOnClickListener(this);
+        findViewById(R.id.btnPagarBoleto).setOnClickListener(this);
 
         lblSaldo.setText(String.format(("R$ ") + "%.2f", ServiceGenerator.CONTA.saldo));
 
@@ -101,6 +106,20 @@ public class ViewPagamento extends AppCompatActivity implements View.OnClickList
             case R.id.btnEsconderSaldo:
                 exibirSaldo();
                 break;
+
+            case R.id.btnPagarBoleto:
+                exibirTextCodigo();
+                break;
+        }
+    }
+
+    private void exibirTextCodigo() {
+        if (linearCodigoBoleto.getVisibility() == View.VISIBLE && lblCodigoBoleto.getVisibility() == View.VISIBLE) {
+            linearCodigoBoleto.setVisibility(View.INVISIBLE);
+            lblCodigoBoleto.setVisibility(View.INVISIBLE);
+        } else {
+            linearCodigoBoleto.setVisibility(View.VISIBLE);
+            lblCodigoBoleto.setVisibility(View.VISIBLE);
         }
     }
 
@@ -178,7 +197,7 @@ public class ViewPagamento extends AppCompatActivity implements View.OnClickList
         });
     }
 
-    public void alterarConta(){
+    public void alterarConta() {
 
         Gson gson = new GsonBuilder()
                 .setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
@@ -195,7 +214,7 @@ public class ViewPagamento extends AppCompatActivity implements View.OnClickList
         call.enqueue(new Callback<Conta>() {
             @Override
             public void onResponse(Call<Conta> call, Response<Conta> response) {
-                if(response.isSuccessful() && response.body() != null){
+                if (response.isSuccessful() && response.body() != null) {
 
                 }
             }
