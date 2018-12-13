@@ -1,11 +1,21 @@
 <resources>
     <string name="app_name">TraineeBanking</string>
+
     <string name="poupanca">Poupança -> O investimento na poupança possui
         rendimento anual de 5% ao ano e não e cobrado
         multa para retirada antes do prazo.</string>
-
     <string name="pre_fixado">Pré-Fixado -> O investimento pré-fixado possui
         rendimento anual de 7% ao ano e caso seja
         retirado antes da hora é cobrado multa no valor
         de R$300,00.</string>
+
+    <string name="inestimentos_TB">Se você tem investimentos no Trainee Banking,
+        pode usar esses bens e pedir o crédito com garantia,
+        o empréstimo com taxas de juros menores para realizar seus projetos.</string>
+    <string name="emprestimo_garantia">Com o empréstimo com garantia de investimentos,
+        você pode fazer tudo aquilo que planeja e ainda garantir a rentabilidade dos seus investimentos,
+        pois não é necessário resgatar as suas aplicações! Mas atenção, ao contratar, confira os encargos.
+        Eles podem ser superiores ao rendimento dos seus investimentos.</string>
+
+    <string name="ip">http://10.0.2.2:49283</string>
 </resources>
