@@ -56,11 +56,11 @@ public class ResgateAdapter extends RecyclerView.Adapter<ResgateAdapter.viewHold
     public void onBindViewHolder(@NonNull viewHolder viewHolder, int i) {
         Investimento investimento = mList.get(i);
 
-        viewHolder.txtInvestimento.setText(investimento.tipo);
-        viewHolder.txtValor.setText("R$" + Double.toString((investimento.getValor())));
-        viewHolder.txtJuros.setText(Double.toString((investimento.getJuros())) + "%");
-        viewHolder.txtDataAplicacao.setText(investimento.dataInvestimento.toString());
-        viewHolder.txtDataVencimento.setText(investimento.dataTermino.toString());
+        viewHolder.lblInvestimento.setText(investimento.tipo);
+        viewHolder.lblValor.setText("R$" + Double.toString((investimento.getValor())));
+        viewHolder.lblJuros.setText(Double.toString((investimento.getJuros())) + "%");
+        viewHolder.lblDataAplicacao.setText(investimento.dataInvestimento.toString());
+        viewHolder.lblDataVencimento.setText(investimento.dataTermino.toString());
     }
 
     @Override
@@ -69,20 +69,20 @@ public class ResgateAdapter extends RecyclerView.Adapter<ResgateAdapter.viewHold
     }
 
     public class viewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public TextView txtInvestimento;
-        public TextView txtValor;
-        public TextView txtJuros;
-        public TextView txtDataAplicacao;
-        public TextView txtDataVencimento;
+        public TextView lblInvestimento;
+        public TextView lblValor;
+        public TextView lblJuros;
+        public TextView lblDataAplicacao;
+        public TextView lblDataVencimento;
 
         public viewHolder(View itemView) {
             super(itemView);
 
-            txtInvestimento = itemView.findViewById(R.id.lblInvestimento);
-            txtValor = itemView.findViewById(R.id.lblValor);
-            txtJuros = itemView.findViewById(R.id.lblJuros);
-            txtDataAplicacao = itemView.findViewById(R.id.lblDataAplicacao);
-            txtDataVencimento = itemView.findViewById(R.id.lblDataVencimento);
+            lblInvestimento = itemView.findViewById(R.id.lblInvestimento);
+            lblValor = itemView.findViewById(R.id.lblValor);
+            lblJuros = itemView.findViewById(R.id.lblJuros);
+            lblDataAplicacao = itemView.findViewById(R.id.lblDataAplicacao);
+            lblDataVencimento = itemView.findViewById(R.id.lblDataVencimento);
 
             itemView.setOnClickListener(this);
         }

@@ -4,152 +4,134 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.ViewEmprestimo"
+    android:background="@drawable/background_apk"
     android:orientation="vertical"
-    android:background="@drawable/background_apk">
+    tools:context=".Activity.ViewEmprestimo">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/logo_tb_azul"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:src="@drawable/logo_tb_azul" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
             android:layout_marginLeft="5dp"
+            android:layout_marginTop="8dp"
             android:layout_marginRight="5dp"
-            android:background="@drawable/screen_border"
-            android:orientation="vertical"
             android:layout_marginBottom="30dp"
-            >
+            android:background="@drawable/screen_border"
+            android:orientation="vertical">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:text="Empréstimo"
                 android:textColor="@color/black"
                 android:textSize="30sp"
-                android:textStyle="bold"
-                android:gravity="center_horizontal"
-                />
+                android:textStyle="bold" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
                 android:layout_marginTop="15dp"
-                >
+                android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:weightSum="100"
-                    >
+                    android:weightSum="100">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
                         android:layout_weight="50"
-                        android:gravity="center_horizontal">
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
                         <ImageView
+                            android:id="@+id/btnCreditoGarantia"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/icone_creditoinvestimento"
-                            />
+                            android:src="@drawable/icone_creditoinvestimento" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center_horizontal"
                             android:text="Crédito com Garantia de Investimento"
-                            android:textSize="20sp"
                             android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:gravity="center_horizontal"
-                            android:layout_marginTop="5dp"/>
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
                         android:layout_weight="50"
                         android:gravity="center_horizontal"
-                        >
+                        android:orientation="vertical">
+
                         <ImageView
+                            android:id="@+id/btnFinanciamento"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/icone_creditoconsignado"
-                            />
+                            android:src="@drawable/icone_financiamento" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Crédito Consignado"
-                            android:textSize="20sp"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:gravity="center_horizontal"
                             android:layout_marginTop="5dp"
-                            />
+                            android:gravity="center_horizontal"
+                            android:text="Financiamento"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="100"
                     android:layout_marginTop="15dp"
-                    >
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:layout_weight="50"
-                        android:gravity="center_horizontal">
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/icone_financiamento"
-                            />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Financiamento"
-                            android:textSize="20sp"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:gravity="center_horizontal"
-                            android:layout_marginTop="5dp"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
                         android:layout_weight="50"
                         android:gravity="center_horizontal"
-                        >
+                        android:orientation="vertical">
+
                         <ImageView
+                            android:id="@+id/btnAcordo"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/icone_acordo"
-                            />
+                            android:src="@drawable/icone_acordo" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Acordo"
-                            android:textSize="20sp"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:gravity="center_horizontal"
                             android:layout_marginTop="5dp"
-                            />
+                            android:gravity="center_horizontal"
+                            android:text="Acordo"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
 
-
-
                 </LinearLayout>
-
 
 
             </LinearLayout>
