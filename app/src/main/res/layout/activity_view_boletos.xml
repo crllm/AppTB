@@ -39,46 +39,6 @@
                 android:gravity="center_horizontal"
                 />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:background="@color/white"
-                android:layout_marginTop="10dp"
-                android:padding="5dp"
-                android:weightSum="100">
-
-                <TextView
-                    android:id="@+id/lblData"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="35"
-                    android:textColor="@color/black"
-                    android:gravity="center"
-                    android:text="Data"/>
-
-                <TextView
-                    android:id="@+id/lblHistorico"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="45"
-                    android:textColor="@color/black"
-                    android:gravity="center"
-                    android:text="Histórico"/>
-
-                <TextView
-                    android:id="@+id/lblValor"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="20"
-                    android:textColor="@color/black"
-                    android:gravity="center"
-                    android:text="Valor"/>
-
-
-            </LinearLayout>
-
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rvBoletos"
                 android:layout_width="match_parent"
