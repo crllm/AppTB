@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.Toast;
 
@@ -33,7 +35,7 @@ public class ViewResgatarActivity extends AppCompatActivity implements AdapterPo
     private RecyclerView mRecycler;
     private ResgateAdapter mAdapter;
     private List<Investimento> mList;
-
+    private RelativeLayout pbLoading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,8 @@ public class ViewResgatarActivity extends AppCompatActivity implements AdapterPo
         LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mRecycler.setLayoutManager(manager);
         mRecycler.setHasFixedSize(true);
+
+        pbLoading = findViewById(R.id.pbLoading);
 
         getInvestimentosId();
 
@@ -96,6 +100,7 @@ public class ViewResgatarActivity extends AppCompatActivity implements AdapterPo
         AlertDialog.Builder sim = warning.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                pbLoading.setVisibility(ProgressBar.VISIBLE);
                 resgatarInvestimentoAPI(mAdapter.getInvestimento(position));
                 mAdapter.notifyDataSetChanged();
             }
@@ -110,7 +115,7 @@ public class ViewResgatarActivity extends AppCompatActivity implements AdapterPo
 
         Retrofit retrofit = new Retrofit
                 .Builder()
-                .baseUrl("http://10.0.2.2:49283")
+                .baseUrl(getString(R.string.ip))
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
@@ -120,10 +125,30 @@ public class ViewResgatarActivity extends AppCompatActivity implements AdapterPo
         call.enqueue(new Callback<Investimento>() {
             @Override
             public void onResponse(Call<Investimento> call, Response<Investimento> response) {
+                if (response.isSuccessful()) {
+
+                    Toast.makeText(
+                            ViewResgatarActivity.this,
+                            "Resgate do investimento realizado com sucesso!",
+                            Toast.LENGTH_LONG
+                    ).show();
+
+                    Intent i = new Intent(ViewResgatarActivity.this, ViewInvestimentos.class);
+                    startActivity(i);
+                    finish();
+
+                } else {
+                    Toast.makeText(
+                            ViewResgatarActivity.this,
+                            "Retornou vazio",
+                            Toast.LENGTH_LONG
+                    ).show();
+                }
             }
 
             @Override
             public void onFailure(Call<Investimento> call, Throwable t) {
+                pbLoading.setVisibility(ProgressBar.INVISIBLE);
             }
         });
     }

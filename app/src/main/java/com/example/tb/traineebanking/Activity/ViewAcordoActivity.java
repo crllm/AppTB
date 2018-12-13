@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,6 +52,8 @@ public class ViewAcordoActivity extends AppCompatActivity implements AdapterPosi
 
     private Button btnSolicitarAcordo;
 
+    private RelativeLayout pbLoading;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +68,8 @@ public class ViewAcordoActivity extends AppCompatActivity implements AdapterPosi
 
         btnSolicitarAcordo = findViewById(R.id.btnSolicitarAcordo);
 
+        pbLoading = findViewById(R.id.pbLoading);
+
         mRecycler = findViewById(R.id.rvAcordo);
 
         LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
@@ -76,6 +82,8 @@ public class ViewAcordoActivity extends AppCompatActivity implements AdapterPosi
         btnSolicitarAcordo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pbLoading.setVisibility(ProgressBar.VISIBLE);
+
                 solicitaAcordo();
             }
         });
@@ -95,7 +103,6 @@ public class ViewAcordoActivity extends AppCompatActivity implements AdapterPosi
             @Override
             public void onResponse(Call<List<Acordo>> call, Response<List<Acordo>> response) {
                 if (response.isSuccessful()) {
-
                     mList = response.body();
 
                     mAdapter = new AcordoAdapter(ViewAcordoActivity.this, mList);
@@ -105,7 +112,7 @@ public class ViewAcordoActivity extends AppCompatActivity implements AdapterPosi
                 } else {
                     Toast.makeText(
                             ViewAcordoActivity.this,
-                            "Retornou vazio",
+                            "Nenhum empréstimo encontrado!",
                             Toast.LENGTH_LONG
                     ).show();
                 }
@@ -115,7 +122,7 @@ public class ViewAcordoActivity extends AppCompatActivity implements AdapterPosi
             public void onFailure(Call<List<Acordo>> call, Throwable t) {
                 Toast.makeText(
                         ViewAcordoActivity.this,
-                        "Deu ruim: " + t.getMessage(),
+                        "Erro, tente novamente mais tarde!",
                         Toast.LENGTH_LONG
                 ).show();
             }
@@ -153,10 +160,16 @@ public class ViewAcordoActivity extends AppCompatActivity implements AdapterPosi
                             Toast.LENGTH_LONG
                     ).show();
 
+                    Intent i = new Intent(ViewAcordoActivity.this, ViewEmprestimo.class);
+                    startActivity(i);
+                    finish();
+
                 } else {
+                    pbLoading.setVisibility(ProgressBar.INVISIBLE);
+
                     Toast.makeText(
                             ViewAcordoActivity.this,
-                            "Retornou vazio",
+                            "Não foi possível realizar o acordo",
                             Toast.LENGTH_LONG
                     ).show();
                 }
@@ -164,9 +177,11 @@ public class ViewAcordoActivity extends AppCompatActivity implements AdapterPosi
 
             @Override
             public void onFailure(Call<Emprestimo> call, Throwable t) {
+                pbLoading.setVisibility(ProgressBar.INVISIBLE);
+
                 Toast.makeText(
                         ViewAcordoActivity.this,
-                        "Deu ruim: " + t.getMessage(),
+                        "Erro, tente acessar mais tarde!",
                         Toast.LENGTH_LONG
                 ).show();
             }

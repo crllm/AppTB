@@ -15,8 +15,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +39,7 @@ public class ViewFinanciamento extends AppCompatActivity {
     private RadioButton rbBoleto;
     private RadioButton rbDebito;
     private Button btnSolicitarEmprestimo;
+    private RelativeLayout pbLoading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,7 @@ public class ViewFinanciamento extends AppCompatActivity {
         rbBoleto = findViewById(R.id.rbBoleto);
         rbDebito = findViewById(R.id.rbDebito);
         btnSolicitarEmprestimo = findViewById(R.id.btnSolicitarEmprestimo);
+        pbLoading = findViewById(R.id.pbLoading);
 
         if(getIntent().hasExtra("garantia")){
             garantia = (int) getIntent().getSerializableExtra("garantia");
@@ -62,6 +66,7 @@ public class ViewFinanciamento extends AppCompatActivity {
         btnSolicitarEmprestimo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pbLoading.setVisibility(ProgressBar.VISIBLE);
                 gerarEmprestimo();
             }
         });
@@ -115,11 +120,13 @@ public class ViewFinanciamento extends AppCompatActivity {
                             "Emprestimo realizado com sucesso!",
                             Toast.LENGTH_LONG
                     ).show();
+
                     Intent i = new Intent(ViewFinanciamento.this, ViewEmprestimo.class);
                     startActivity(i);
                     finish();
 
                 } else {
+                    pbLoading.setVisibility(ProgressBar.INVISIBLE);
                     Toast.makeText(
                             ViewFinanciamento.this,
                             "Não foi possível realizar o empréstimo!",
@@ -130,9 +137,10 @@ public class ViewFinanciamento extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Conta> call, Throwable t) {
+                pbLoading.setVisibility(ProgressBar.INVISIBLE);
                 Toast.makeText(
                         ViewFinanciamento.this,
-                        "Erro, tente acessar mais tarde" + t.getMessage(),
+                        "Erro, tente acessar mais tarde!",
                         Toast.LENGTH_LONG
                 ).show();
             }
