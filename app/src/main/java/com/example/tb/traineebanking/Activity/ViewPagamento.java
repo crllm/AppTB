@@ -158,8 +158,11 @@ public class ViewPagamento extends AppCompatActivity implements View.OnClickList
                 if (response.isSuccessful() && response.body() != null) {
                     boleto = response.body();
                     if (boleto.getStatus() == 1) {
+                        pbLoading.setVisibility(ProgressBar.INVISIBLE);
                         Toast.makeText(ViewPagamento.this, "O boleto já está pago!", Toast.LENGTH_LONG).show();
+                        return;
                     } else
+                        pbLoading.setVisibility(ProgressBar.INVISIBLE);
                         exibirBoleto();
 
                 } else {
