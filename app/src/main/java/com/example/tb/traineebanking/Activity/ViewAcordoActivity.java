@@ -135,7 +135,7 @@ public class ViewAcordoActivity extends AppCompatActivity implements AdapterPosi
     public void solicitaAcordo() {
         Retrofit retrofit = new Retrofit
                 .Builder()
-                .baseUrl("http://10.0.2.2:49283")
+                .baseUrl(getString(R.string.ip))
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

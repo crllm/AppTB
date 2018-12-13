@@ -63,7 +63,7 @@ public class ViewExtratoActivity extends AppCompatActivity {
 
         Retrofit retrofit = new Retrofit
                 .Builder()
-                .baseUrl("http://10.0.2.2:49283")
+                .baseUrl(getString(R.string.ip))
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
