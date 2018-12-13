@@ -171,7 +171,7 @@ public class ViewInvestimentos extends AppCompatActivity {
                 .build();
 
         API api = retrofit.create(API.class);
-        Call<List<Investimento>> call = api.getInvestimentos(ServiceGenerator.CONTA);
+        Call<List<Investimento>> call = api.getInvestimentosId(ServiceGenerator.CONTA.idConta);
 
         call.enqueue(new Callback<List<Investimento>>() {
             @Override

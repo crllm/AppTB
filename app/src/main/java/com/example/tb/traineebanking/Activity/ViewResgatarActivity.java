@@ -79,7 +79,7 @@ public class ViewResgatarActivity extends AppCompatActivity implements AdapterPo
             @Override
             public void onFailure(Call<List<Investimento>> call, Throwable t) {
                 Toast.makeText(ViewResgatarActivity.this,
-                        "EROU",
+                        "Erro",
                         Toast.LENGTH_LONG
                 ).show();
             }
@@ -121,12 +121,10 @@ public class ViewResgatarActivity extends AppCompatActivity implements AdapterPo
         call.enqueue(new Callback<Investimento>() {
             @Override
             public void onResponse(Call<Investimento> call, Response<Investimento> response) {
-
             }
 
             @Override
             public void onFailure(Call<Investimento> call, Throwable t) {
-
             }
         });
     }

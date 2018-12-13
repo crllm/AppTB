@@ -5,27 +5,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_apk"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".Activity.ViewEfetuarAplicacao">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
         android:padding="5dp">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:src="@drawable/logo_tb_azul" />
 
         <LinearLayout
-            android:id="@+id/lltSolicitar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="8dp"
             android:layout_marginRight="5dp"
             android:background="@drawable/screen_border"
             android:orientation="vertical"
@@ -35,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="Aplicações"
+                android:text="Aplicar"
                 android:textColor="@color/black"
                 android:textSize="30sp"
                 android:textStyle="bold" />
@@ -44,29 +44,60 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="@string/poupanca"
+                android:text="Digite o valor a investir"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/txtValorInvestimento"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_gravity="right"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/textbox_border"
+                android:inputType="number"
+                android:textSize="16sp" />
 
             <TextView
-                android:layout_marginTop="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/pre_fixado"
+                android:layout_marginTop="15dp"
+                android:text="Selecione o grupo de investimento"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/rdbPoupanca"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Poupança"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <RadioButton
+                    android:id="@+id/rdbPreFixado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pré-Fixado"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </RadioGroup>
+
             <Button
-                android:id="@+id/btnSolicitar"
+                android:id="@+id/btnInvestir"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/buttonazul_border"
-                android:text="SOLICITAR"
+                android:text="Investir"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
         </LinearLayout>
-    </RelativeLayout>
+    </LinearLayout>
 
 </LinearLayout>

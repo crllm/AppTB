@@ -40,6 +40,9 @@ public interface API {
     @GET("api/investimento//{id}")
     Call<List<Investimento>> getInvestimentosId(@Path("id") int id);
 
+    @GET("api/listartodosinvestimentos//{id}")
+    Call<List<Investimento>> getTotosInvestimentos(@Path("id") int id);
+
     @PUT("/api/investimento")
     Call<Investimento> resgatarInvestimento(@Body Investimento investimento);
 

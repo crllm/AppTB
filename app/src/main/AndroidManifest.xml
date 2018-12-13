@@ -59,6 +59,9 @@
         <activity
             android:name=".Activity.ViewResgatarActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
+            android:name=".Activity.ViewEfetuarAplicacao"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
     </application>
 
 </manifest>
