@@ -166,12 +166,12 @@ public class ViewInvestimentos extends AppCompatActivity {
 
         Retrofit retrofit = new Retrofit
                 .Builder()
-                .baseUrl("http://10.0.2.2:49283")
+                .baseUrl(getString(R.string.ip))
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
         API api = retrofit.create(API.class);
-        Call<List<Investimento>> call = api.getInvestimentos(ServiceGenerator.CONTA);
+        Call<List<Investimento>> call = api.getInvestimentosId(ServiceGenerator.CONTA.idConta);
 
         call.enqueue(new Callback<List<Investimento>>() {
             @Override

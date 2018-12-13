@@ -1,6 +1,8 @@
 package com.example.tb.traineebanking.Activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -70,20 +72,13 @@ public class ViewResgatarActivity extends AppCompatActivity implements AdapterPo
                     mAdapter = new ResgateAdapter(ViewResgatarActivity.this, mList);
                     mAdapter.setAdapterPositionOnClickListener(ViewResgatarActivity.this);
                     mRecycler.setAdapter(mAdapter);
-
-                } else {
-                    Toast.makeText(ViewResgatarActivity.this,
-                            "erou",
-                            Toast.LENGTH_LONG
-                    ).show();
-
                 }
             }
 
             @Override
             public void onFailure(Call<List<Investimento>> call, Throwable t) {
                 Toast.makeText(ViewResgatarActivity.this,
-                        "EROU",
+                        "Erro",
                         Toast.LENGTH_LONG
                 ).show();
             }
@@ -91,10 +86,46 @@ public class ViewResgatarActivity extends AppCompatActivity implements AdapterPo
     }
 
     @Override
-    public void setAdapterPositionOnClickListener(View view, int position) {
-        Intent intent = new Intent(ViewResgatarActivity.this, ViewInvestimentos.class);
-        intent.putExtra("Investimento", mList.get(position));
-        startActivity(intent);
+    public void setAdapterPositionOnClickListener(View view, int p) {
+        AlertDialog.Builder warning = new AlertDialog.Builder(ViewResgatarActivity.this);
+        warning.setTitle("Resgatar");
+        warning.setMessage("Deseja resgatar o investimento selecionado?");
+        final int position = p;
 
+        warning.setNegativeButton("Não", null);
+        AlertDialog.Builder sim = warning.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                resgatarInvestimentoAPI(mAdapter.getInvestimento(position));
+                mAdapter.notifyDataSetChanged();
+            }
+        });
+        warning.show();
     }
+
+    public void resgatarInvestimentoAPI(Investimento investimento) {
+
+        Gson gson = new GsonBuilder()
+                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
+
+        Retrofit retrofit = new Retrofit
+                .Builder()
+                .baseUrl("http://10.0.2.2:49283")
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+
+        API api = retrofit.create(API.class);
+        Call<Investimento> call = api.resgatarInvestimento(investimento);
+
+        call.enqueue(new Callback<Investimento>() {
+            @Override
+            public void onResponse(Call<Investimento> call, Response<Investimento> response) {
+            }
+
+            @Override
+            public void onFailure(Call<Investimento> call, Throwable t) {
+            }
+        });
+    }
+
 }

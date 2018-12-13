@@ -49,6 +49,8 @@
                 android:layout_marginLeft="10dp"
                 />
             <EditText
+                android:id="@+id/txtEmail"
+                android:paddingLeft="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginLeft="10dp"
@@ -67,6 +69,8 @@
                 android:layout_marginLeft="10dp"
                 />
             <EditText
+                android:id="@+id/txtTelefone"
+                android:paddingLeft="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginLeft="10dp"
@@ -85,6 +89,8 @@
                 android:layout_marginLeft="10dp"
                 />
             <EditText
+                android:id="@+id/txtCelular"
+                android:paddingLeft="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginLeft="10dp"
@@ -98,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
                 android:textSize="20sp"
-                android:text="Endereços"
+                android:text="Endereço"
                 android:textColor="@color/black"
                 android:layout_marginLeft="10dp"
                 android:textStyle="bold"
@@ -114,6 +120,8 @@
                 android:layout_marginLeft="10dp"
                 />
             <EditText
+                android:id="@+id/txtRua"
+                android:paddingLeft="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginLeft="10dp"
@@ -142,6 +150,8 @@
                         android:layout_marginLeft="10dp"
                         />
                     <EditText
+                        android:id="@+id/txtNumero"
+                        android:paddingLeft="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:layout_marginLeft="10dp"
@@ -166,6 +176,8 @@
                         android:layout_marginLeft="10dp"
                         />
                     <EditText
+                        android:id="@+id/txtComplemento"
+                        android:paddingLeft="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:layout_marginLeft="10dp"
@@ -186,6 +198,8 @@
                 android:layout_marginLeft="10dp"
                 />
             <EditText
+                android:id="@+id/txtBairro"
+                android:paddingLeft="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginLeft="10dp"
@@ -204,6 +218,8 @@
                 android:layout_marginLeft="10dp"
                 />
             <EditText
+                android:id="@+id/txtCep"
+                android:paddingLeft="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginLeft="10dp"
@@ -222,6 +238,8 @@
                 android:layout_marginLeft="10dp"
                 />
             <EditText
+                android:id="@+id/txtCidade"
+                android:paddingLeft="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginLeft="10dp"
@@ -240,6 +258,8 @@
                 android:layout_marginLeft="10dp"
                 />
             <EditText
+                android:id="@+id/txtEstado"
+                android:paddingLeft="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginLeft="10dp"
@@ -249,6 +269,7 @@
                 android:background="@drawable/textbox_border"
                 />
             <Button
+                android:id="@+id/btnAlterar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/buttonazul_border"

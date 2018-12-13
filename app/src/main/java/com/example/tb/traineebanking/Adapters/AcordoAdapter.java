@@ -8,22 +8,32 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.tb.traineebanking.Interface.AdapterPositionOnClickListener;
+import com.example.tb.traineebanking.Models.Acordo;
 import com.example.tb.traineebanking.R;
 
-/**
- * Created by rafa_ on 04/12/2018.
- */
+import java.util.List;
 
 public class AcordoAdapter extends RecyclerView.Adapter<AcordoAdapter.viewHolder> {
     private Context mContext;
+    private List<Acordo> mList;
+    private AdapterPositionOnClickListener adapterPositionOnClickListener;
 
-    public AcordoAdapter(Context context) {
-        this.mContext = context;
+    public void setAdapterPositionOnClickListener(AdapterPositionOnClickListener click) {
+        adapterPositionOnClickListener = click;
     }
 
-    @NonNull
+    public AcordoAdapter(Context context, List<Acordo> list) {
+        this.mContext = context;
+        this.mList = list;
+    }
+
+    public Acordo getAcordo(int position) {
+        return mList.get(position);
+    }
+
     @Override
-    public viewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public viewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         LayoutInflater inflater = LayoutInflater.from(mContext);
         View holder = inflater.inflate(R.layout.item_acordo, viewGroup, false);
         viewHolder viewHolder = new viewHolder(holder);
@@ -32,19 +42,21 @@ public class AcordoAdapter extends RecyclerView.Adapter<AcordoAdapter.viewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull viewHolder viewHolder, int i) {
-        viewHolder.lblTipo.setText("Emprestimo");
-        viewHolder.lblValor.setText("1000");
-        viewHolder.lblJuros.setText("10");
-        viewHolder.lblValorAberto.setText("10000");
+    public void onBindViewHolder(viewHolder viewHolder, int i) {
+        Acordo acordo = mList.get(i);
+
+        viewHolder.lblTipo.setText(acordo.getTipo());
+        viewHolder.lblValor.setText(Double.toString(acordo.getValor()));
+        viewHolder.lblJuros.setText(Double.toString(acordo.getJuros()));
+        viewHolder.lblValorAberto.setText(Double.toString(acordo.getSaldo()));
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        return mList.size();
     }
 
-    public class viewHolder extends RecyclerView.ViewHolder {
+    public class viewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView lblTipo;
         public TextView lblValor;
         public TextView lblJuros;
@@ -57,6 +69,15 @@ public class AcordoAdapter extends RecyclerView.Adapter<AcordoAdapter.viewHolder
             lblValor = itemView.findViewById(R.id.lblValor);
             lblJuros = itemView.findViewById(R.id.lblJuros);
             lblValorAberto = itemView.findViewById(R.id.lblValorAberto);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            if(adapterPositionOnClickListener != null) {
+                adapterPositionOnClickListener.setAdapterPositionOnClickListener(v, getPosition());
+            }
         }
     }
 }

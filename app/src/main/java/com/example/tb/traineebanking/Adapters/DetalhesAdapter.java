@@ -12,33 +12,20 @@ import com.example.tb.traineebanking.Interface.AdapterPositionOnClickListener;
 import com.example.tb.traineebanking.Models.Investimento;
 import com.example.tb.traineebanking.R;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
-/**
- * Created by rafa_ on 04/12/2018.
- */
 
-public class ResgateAdapter extends RecyclerView.Adapter<ResgateAdapter.viewHolder> {
+public class DetalhesAdapter extends RecyclerView.Adapter<DetalhesAdapter.viewHolder> {
     private Context mContext;
     private List<Investimento> mList;
-    private AdapterPositionOnClickListener adapterPositionOnClickListener;
 
-
-    public void setAdapterPositionOnClickListener(AdapterPositionOnClickListener click) {
-        adapterPositionOnClickListener = click;
-
-    }
-
-    public ResgateAdapter(Context mContext, List<Investimento> mList) {
+    public DetalhesAdapter(Context mContext, List<Investimento> mList) {
         this.mContext = mContext;
         this.mList = mList;
     }
 
-    public Investimento getInvestimento(int position) {
-        return mList.get(position);
+    public void getInvestimento(int position) {
+        mList.get(position);
     }
 
 
@@ -46,7 +33,7 @@ public class ResgateAdapter extends RecyclerView.Adapter<ResgateAdapter.viewHold
     @Override
     public viewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         LayoutInflater inflater = LayoutInflater.from(mContext);
-        View holder = inflater.inflate(R.layout.item_resgate, viewGroup, false);
+        View holder = inflater.inflate(R.layout.item_detalhes, viewGroup, false);
         viewHolder ViewHolder = new viewHolder(holder);
 
         return ViewHolder;
@@ -78,21 +65,15 @@ public class ResgateAdapter extends RecyclerView.Adapter<ResgateAdapter.viewHold
         public viewHolder(View itemView) {
             super(itemView);
 
-            txtInvestimento = itemView.findViewById(R.id.lblInvestimento);
-            txtValor = itemView.findViewById(R.id.lblValor);
-            txtJuros = itemView.findViewById(R.id.lblJuros);
-            txtDataAplicacao = itemView.findViewById(R.id.lblDataAplicacao);
-            txtDataVencimento = itemView.findViewById(R.id.lblDataVencimento);
-
-            itemView.setOnClickListener(this);
+            txtInvestimento = itemView.findViewById(R.id.txtInvestimento);
+            txtValor = itemView.findViewById(R.id.txtValor);
+            txtJuros = itemView.findViewById(R.id.txtJuros);
+            txtDataAplicacao = itemView.findViewById(R.id.txtDataAplicacao);
+            txtDataVencimento = itemView.findViewById(R.id.txtDataVencimento);
         }
 
         @Override
         public void onClick(View v) {
-            if (adapterPositionOnClickListener != null) {
-                adapterPositionOnClickListener.setAdapterPositionOnClickListener(v, getPosition());
-
-            }
         }
     }
 }

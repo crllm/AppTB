@@ -4,122 +4,98 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.ViewFinanciamento"
+    android:background="@drawable/background_apk"
     android:orientation="vertical"
-    android:background="@drawable/background_apk">
+    tools:context=".Activity.ViewEfetuarAplicacao">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:gravity="center_horizontal"
+        android:orientation="vertical"
         android:padding="5dp">
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/logo_tb_azul"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:src="@drawable/logo_tb_azul" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
             android:layout_marginLeft="5dp"
+            android:layout_marginTop="8dp"
             android:layout_marginRight="5dp"
             android:background="@drawable/screen_border"
             android:orientation="vertical"
             android:padding="20dp">
+
             <TextView
-                android:id="@+id/lblFinanciamento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Financiamento"
+                android:gravity="center_horizontal"
+                android:text="Aplicar"
                 android:textColor="@color/black"
                 android:textSize="30sp"
-                android:textStyle="bold"
-                android:gravity="center_horizontal"
-                />
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Valor a fazer o empréstimo"
+                android:text="Digite o valor a investir"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/txtValor"
+                android:id="@+id/txtValorInvestimento"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_gravity="right"
                 android:layout_marginTop="5dp"
-                android:padding="10dp"
                 android:background="@drawable/textbox_border"
-                android:textSize="16sp"/>
+                android:inputType="number"
+                android:textSize="16sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:text="Forma de pagamento"
+                android:text="Selecione o grupo de investimento"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
-            <LinearLayout
+            <RadioGroup
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content">
 
-                <RadioGroup
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <RadioButton
-                        android:id="@+id/rb6x"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Em 6x"
-                        android:textSize="18sp"
-                        android:checked="true"/>
-
-                    <RadioButton
-                        android:id="@+id/rb12x"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Em 12x"
-                        android:textSize="18sp"/>
-                </RadioGroup>
-
-                <RadioGroup
+                <RadioButton
+                    android:id="@+id/rdbPoupanca"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp">
-                    <RadioButton
-                        android:id="@+id/rbBoleto"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Boleto Mensal"
-                        android:textSize="18sp"
-                        android:checked="true"/>
+                    android:text="Poupança"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
 
-                    <RadioButton
-                        android:id="@+id/rbDebito"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Débito Automático"
-                        android:textSize="18sp"/>
-                </RadioGroup>
-
-            </LinearLayout>
+                <RadioButton
+                    android:id="@+id/rdbPreFixado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pré-Fixado"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </RadioGroup>
 
             <Button
-                android:id="@+id/btnSolicitarEmprestimo"
+                android:id="@+id/btnInvestir"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="30dp"
-                android:textSize="20sp"
                 android:background="@drawable/buttonazul_border"
+                android:text="Investir"
                 android:textColor="@color/white"
-                android:text="SOLICITAR"/>
+                android:textSize="20sp" />
 
         </LinearLayout>
     </LinearLayout>
