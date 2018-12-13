@@ -29,8 +29,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ViewFinanciamento extends AppCompatActivity {
 
     private int garantia;
-    private int parcelas;
-    private int pagamento;
 
     private TextView lblFinanciamento;
     private EditText txtValor;
@@ -104,12 +102,14 @@ public class ViewFinanciamento extends AppCompatActivity {
                 .build();
 
         API api = retrofit.create(API.class);
-        Call<Emprestimo> call = api.gerarEmprestimo(buscarFinanciamento());
-        call.enqueue(new Callback<Emprestimo>() {
+        Call<Conta> call = api.gerarEmprestimo(buscarFinanciamento());
+        call.enqueue(new Callback<Conta>() {
 
             @Override
-            public void onResponse(Call<Emprestimo> call, Response<Emprestimo> response) {
+            public void onResponse(Call<Conta> call, Response<Conta> response) {
                 if (response.isSuccessful()) {
+                    ServiceGenerator.CONTA = response.body();
+
                     Toast.makeText(
                             ViewFinanciamento.this,
                             "Emprestimo realizado com sucesso!",
@@ -129,7 +129,7 @@ public class ViewFinanciamento extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<Emprestimo> call, Throwable t) {
+            public void onFailure(Call<Conta> call, Throwable t) {
                 Toast.makeText(
                         ViewFinanciamento.this,
                         "Erro, tente acessar mais tarde" + t.getMessage(),
