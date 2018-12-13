@@ -76,7 +76,8 @@
                     android:layout_height="wrap_content"
                     android:text="Poupança"
                     android:textColor="@color/black"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:checked="true"/>
 
                 <RadioButton
                     android:id="@+id/rdbPreFixado"
