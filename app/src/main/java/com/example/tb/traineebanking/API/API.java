@@ -16,12 +16,16 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface API {
 
     @POST("/api/conta")
     Call<Conta>  verificarAcesso(@Body LogarConta logarConta);
+
+    @PUT("/api/conta/{id}")
+    Call<Conta>  alterarDadosCadastrais(@Path("id")int id, @Body Conta conta);
 
     @POST("api/extrato")
     Call<List<Extrato>> getExtrato(@Body Conta conta);
