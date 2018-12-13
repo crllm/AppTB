@@ -72,7 +72,6 @@ public class ViewResgatarActivity extends AppCompatActivity implements AdapterPo
                     mAdapter = new ResgateAdapter(ViewResgatarActivity.this, mList);
                     mAdapter.setAdapterPositionOnClickListener(ViewResgatarActivity.this);
                     mRecycler.setAdapter(mAdapter);
-
                 }
             }
 
@@ -111,7 +110,7 @@ public class ViewResgatarActivity extends AppCompatActivity implements AdapterPo
 
         Retrofit retrofit = new Retrofit
                 .Builder()
-                .baseUrl(getString(R.string.ip))
+                .baseUrl("http://10.0.2.2:49283")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 

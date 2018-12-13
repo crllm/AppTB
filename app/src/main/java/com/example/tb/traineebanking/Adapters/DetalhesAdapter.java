@@ -14,20 +14,10 @@ import com.example.tb.traineebanking.R;
 
 import java.util.List;
 
-/**
- * Created by rafa_ on 04/12/2018.
- */
 
 public class DetalhesAdapter extends RecyclerView.Adapter<DetalhesAdapter.viewHolder> {
     private Context mContext;
     private List<Investimento> mList;
-    private AdapterPositionOnClickListener adapterPositionOnClickListener;
-
-
-    public void setAdapterPositionOnClickListener(AdapterPositionOnClickListener click) {
-        adapterPositionOnClickListener = click;
-
-    }
 
     public DetalhesAdapter(Context mContext, List<Investimento> mList) {
         this.mContext = mContext;
@@ -80,15 +70,10 @@ public class DetalhesAdapter extends RecyclerView.Adapter<DetalhesAdapter.viewHo
             txtJuros = itemView.findViewById(R.id.txtJuros);
             txtDataAplicacao = itemView.findViewById(R.id.txtDataAplicacao);
             txtDataVencimento = itemView.findViewById(R.id.txtDataVencimento);
-
         }
 
         @Override
         public void onClick(View v) {
-            if (adapterPositionOnClickListener != null) {
-                adapterPositionOnClickListener.setAdapterPositionOnClickListener(v, getPosition());
-
-            }
         }
     }
 }

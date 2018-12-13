@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.tb.traineebanking.API.API;
+import com.example.tb.traineebanking.Adapters.DetalhesAdapter;
 import com.example.tb.traineebanking.Adapters.ResgateAdapter;
 import com.example.tb.traineebanking.Interface.AdapterPositionOnClickListener;
 import com.example.tb.traineebanking.Models.Investimento;
@@ -28,7 +29,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ViewDetalhesActivity extends AppCompatActivity {
     private RecyclerView mRecycler;
-    private ResgateAdapter mAdapter;
+    private DetalhesAdapter mAdapter;
     private List<Investimento> mList;
 
 
@@ -58,7 +59,7 @@ public class ViewDetalhesActivity extends AppCompatActivity {
                 .build();
 
         API api = retrofit.create(API.class);
-        Call<List<Investimento>> call = api.getInvestimentosId(ServiceGenerator.CONTA.idConta);
+        Call<List<Investimento>> call = api.getTotosInvestimentos(ServiceGenerator.CONTA.idConta);
 
         call.enqueue(new Callback<List<Investimento>>() {
             @Override
@@ -66,7 +67,7 @@ public class ViewDetalhesActivity extends AppCompatActivity {
                 if (response.body() != null) {
                     mList = response.body();
 
-                    mAdapter = new ResgateAdapter(ViewDetalhesActivity.this, mList);
+                    mAdapter = new DetalhesAdapter(ViewDetalhesActivity.this, mList);
                     mRecycler.setAdapter(mAdapter);
                 }
             }
