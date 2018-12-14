@@ -33,18 +33,17 @@ public class BoletosAdapter extends RecyclerView.Adapter<BoletosAdapter.viewHold
         return mList.get(position);
     }
 
-    @NonNull
     @Override
-    public viewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public viewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         LayoutInflater inflater = LayoutInflater.from(mContext);
         View holder = inflater.inflate(R.layout.item_boletos, viewGroup, false);
-        BoletosAdapter.viewHolder viewHolder = new BoletosAdapter.viewHolder(holder);
+        viewHolder viewHolder = new viewHolder(holder);
 
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull viewHolder viewHolder, int i) {
+    public void onBindViewHolder(viewHolder viewHolder, int i) {
         Boleto boleto = mList.get(i);
 
         viewHolder.lblTipoBoleto.setText(boleto.getEmprestimo().getTipo());

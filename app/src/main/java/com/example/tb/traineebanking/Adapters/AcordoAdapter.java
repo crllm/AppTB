@@ -48,7 +48,7 @@ public class AcordoAdapter extends RecyclerView.Adapter<AcordoAdapter.viewHolder
         viewHolder.lblTipo.setText(acordo.getTipo());
         viewHolder.lblValor.setText(Double.toString(acordo.getValor()));
         viewHolder.lblJuros.setText(Double.toString(acordo.getJuros()));
-        viewHolder.lblValorAberto.setText(Double.toString(acordo.getSaldo()));
+        viewHolder.lblValorAberto.setText(Double.toString(acordo.getSaldo() * -1));
     }
 
     @Override
