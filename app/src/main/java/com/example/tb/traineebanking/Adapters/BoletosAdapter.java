@@ -48,7 +48,7 @@ public class BoletosAdapter extends RecyclerView.Adapter<BoletosAdapter.viewHold
 
         viewHolder.lblTipoBoleto.setText(boleto.getEmprestimo().getTipo());
         viewHolder.lblCodBoleto.setText("Código boleto: " + String.valueOf(boleto.getIdBoleto()));
-        viewHolder.lblValorParcela.setText("Valor: R$ " + Double.toString(boleto.getValor()));
+        viewHolder.lblValorParcela.setText("Valor: \nR$ " + Double.toString(boleto.getValor()));
         viewHolder.lblParcela.setText("Nº da Parcela: " + String.valueOf(boleto.getNumero()));
         viewHolder.lblStatusBoleto.setText("Status: " + String.valueOf(boleto.getStatus()));
     }
