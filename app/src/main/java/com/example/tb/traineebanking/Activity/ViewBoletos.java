@@ -28,11 +28,13 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ViewBoletos extends AppCompatActivity {
+public class ViewBoletos extends AppCompatActivity implements AdapterPositionOnClickListener{
 
     private List<Boleto> mListBoleto = new ArrayList<>();
     private RecyclerView mRecyclerBoleto;
     private BoletosAdapter mBoletoAdapter;
+
+    private Boleto mBoleto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,5 +88,11 @@ public class ViewBoletos extends AppCompatActivity {
                 ).show();
             }
         });
+    }
+
+    @Override
+    public void setAdapterPositionOnClickListener(View view, int position) {
+        mBoleto = mBoletoAdapter.getBoletos(position);
+
     }
 }

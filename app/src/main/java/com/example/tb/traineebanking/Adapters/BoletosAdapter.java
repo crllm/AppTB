@@ -48,6 +48,7 @@ public class BoletosAdapter extends RecyclerView.Adapter<BoletosAdapter.viewHold
         Boleto boleto = mList.get(i);
 
         viewHolder.lblTipoBoleto.setText(boleto.getEmprestimo().getTipo());
+        viewHolder.lblCodBoleto.setText("Código boleto: " + String.valueOf(boleto.getIdBoleto()));
         viewHolder.lblValorParcela.setText("Valor: R$ " + Double.toString(boleto.getValor()));
         viewHolder.lblParcela.setText("Nº da Parcela: " + String.valueOf(boleto.getNumero()));
         viewHolder.lblStatusBoleto.setText("Status: " + String.valueOf(boleto.getStatus()));
@@ -64,10 +65,12 @@ public class BoletosAdapter extends RecyclerView.Adapter<BoletosAdapter.viewHold
         public TextView lblValorParcela;
         public TextView lblParcela;
         public TextView lblStatusBoleto;
+        public TextView lblCodBoleto;
 
         public viewHolder(View itemView) {
             super(itemView);
 
+            lblCodBoleto = itemView.findViewById(R.id.lblCodBoleto);
             lblTipoBoleto = itemView.findViewById(R.id.lblTipoBoleto);
             lblValorParcela = itemView.findViewById(R.id.lblValorParcela);
             lblParcela = itemView.findViewById(R.id.lblParcela);
