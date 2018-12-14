@@ -136,7 +136,7 @@ public class ViewAcordoActivity extends AppCompatActivity implements AdapterPosi
 
         lblTipoEmprestimo.setText(mAcordo.getTipo());
         lblDesconto.setText(Double.toString(juros) + "%");
-        lblValorAcordo.setText("R$ " + Double.toString(valorAcordo));
+        lblValorAcordo.setText("R$ " + Double.toString(valorAcordo * -1));
     }
 
     public void solicitaAcordo() {
