@@ -62,6 +62,9 @@
         <activity
             android:name=".Activity.ViewBoletos"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
+            android:name=".Activity.ViewEfetuarAplicacao"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
     </application>
 
 </manifest>
