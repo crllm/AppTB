@@ -85,7 +85,7 @@ public class ResgateAdapter extends RecyclerView.Adapter<ResgateAdapter.viewHold
             txtDataVencimento = itemView.findViewById(R.id.lblDataVencimento);
 
             txtInvestimento.setOnClickListener(this);
-            
+
         }
 
         @Override

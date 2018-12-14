@@ -68,7 +68,7 @@ public class ViewBoletos extends AppCompatActivity {
                     mListBoleto = response.body();
                     mBoletoAdapter = new BoletosAdapter(ViewBoletos.this, mListBoleto);
                     mRecyclerBoleto.setAdapter(mBoletoAdapter);
-                } else {
+                }else {
                     Toast.makeText(
                             ViewBoletos.this,
                             "Não há boletos associados a esta conta",
